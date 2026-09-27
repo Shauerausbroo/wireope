@@ -1,0 +1,13 @@
+# Learning-rate schedule for the hazard head and the outcome model.
+schedule:
+  name: cosine
+  warmup_fraction: 0.05
+  min_lr_fraction: 0.02
+  epochs: 40
+  batch_size: 256
+  grad_accum: 1
+  seeds: [0, 1, 2, 3, 4]
+  eval_every_epochs: 5
+  early_stopping:
+    enabled: false
+  # engineering default: the manuscript fixes the seeds but does not print them

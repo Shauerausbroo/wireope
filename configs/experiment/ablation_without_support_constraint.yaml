@@ -1,0 +1,17 @@
+# Table 2 panel A row: the support floor and the risk constraint are removed, leaving an
+# unconstrained argmax. The removal is non-monotone: it improves the primary utility
+# metric slightly while removing the mechanism that limits harm.
+name: ablation_without_support_constraint
+inherits: main
+switches:
+  envelope_excursion_reconstruction: true
+  nested_excursion_ladder: true
+  support_constraint: false
+  action_channel: reconstructed
+  estimator: unconstrained_argmax
+report:
+  target: table_2_panel_a
+  variant: without_support_constraint
+  expected_delta_selection_pp: 0.4
+  expected_delta_violation_pp: 1.47
+  expected_interaction_ratio: 1.00

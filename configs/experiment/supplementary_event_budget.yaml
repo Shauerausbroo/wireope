@@ -1,0 +1,14 @@
+# Table 4 panel A: the rarest-rung positive-event count is varied while the number of
+# accrued records is held fixed by construction, so cohort size and event count separate.
+name: supplementary_event_budget
+inherits: main
+sampling:
+  method: rarest_rung_positive_event_subsampling
+  held_fixed: accrued_records
+  event_counts: [5, 10, 15, 20, 30, 40, 60, 80]
+  target_prevalence: 0.047
+  replicates: 20
+report:
+  target: table_4_panel_a
+  columns: [relative_error, effective_sample_size, selection_accuracy, lower_confidence_bound_width]
+  prespecified_knee: low_tens

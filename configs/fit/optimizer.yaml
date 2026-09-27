@@ -1,0 +1,17 @@
+# Optimiser for the hazard head, the behaviour model and the rung-wise outcome model.
+# The manuscript reports no training hyperparameters, so every value here is an engineering
+# default exposed to the CLI and recorded in the deviations list of claim_to_code.json.
+optimizer:
+  name: adamw
+  lr: 3.0e-3
+  betas: [0.9, 0.999]
+  eps: 1.0e-8
+  weight_decay: 1.0e-4
+  amsgrad: false
+  gradient_clipping:
+    max_norm: 1.0
+    mode: global_norm
+  ema:
+    enabled: true
+    decay: 0.999
+    evaluate_ema: true

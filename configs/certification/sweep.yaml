@@ -1,0 +1,21 @@
+# Weight-control and pessimism sweep, fixed in the design rather than added afterwards.
+# The conservative end of the sweep is the headline and the optimistic end is reported as
+# a bound, mirroring the published sweep in which an apparent gain collapsed from +32% to
+# +3% as the pessimism coefficient moved from 0.001 to 0.5.
+sweep:
+  risk_margin_m: 0.01
+  risk_margin_source: engineering_default_analysis_plan_margin
+  pessimism:
+    values: [0.001, 0.5]
+    labels: [least_pessimistic, most_pessimistic]
+    headline: most_pessimistic
+    bound: least_pessimistic
+  clipping:
+    values: [0.02, 0.10, 0.50]
+    labels: [least_aggressive, intermediate, most_aggressive]
+    headline: most_aggressive
+    bound: least_aggressive
+  net_benefit_thresholds: [0.03, 0.05, 0.10, 0.15]
+  primary_utility: selection_accuracy
+  parity_margin_pp: 1.0
+  constraint_axes: [upper_bound_violation_rate, abstention_rate]

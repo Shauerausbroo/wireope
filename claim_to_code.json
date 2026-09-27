@@ -1,0 +1,1622 @@
+{
+  "project": "wireope",
+  "claim_counts": {
+    "claims": 100.0,
+    "passed": 16.0,
+    "failed": 0.0,
+    "not_run": 83.0,
+    "blocked": 1.0
+  },
+  "deviations": [
+    {
+      "paper_location": "Sec. 3.1, Eq. (2) and Eq. (5)",
+      "departure": "the risk constraint is implemented as a lower confidence limit compared against a margin, following Eq. (2), rather than as an upper limit against a threshold as Eq. (5) prints",
+      "why": "the two printed forms disagree in direction; following Eq. (2) keeps a single definition of the constraint, and the conflict is reported as a manuscript finding"
+    },
+    {
+      "paper_location": "Sec. 3.1, Eq. (2) and Eq. (3)",
+      "departure": "the utility the rule maximises is the graded crossing progress on the ladder, the complement of the graded excursion severity of Eq. (3)",
+      "why": "Eq. (2) maximises net benefit while Eq. (3) writes a graded excursion value whose sign runs the other way, so taking Eq. (3) literally would have the rule maximise severity; the estimator of Eq. (4) still estimates the rung marginals exactly as printed"
+    },
+    {
+      "paper_location": "Sec. 3.4 opening",
+      "departure": "the rung indicators nest downward, Y^(k+1) = 1 implying Y^(k) = 1, with the top rung equal to the adjudicated endpoint",
+      "why": "Sec. 3.4 nests the rungs by increasing thresholds, which forces a downward nesting, while Sec. 3.1 prints the implication upward; the product form of Eq. (6) requires the downward reading"
+    },
+    {
+      "paper_location": "Sec. 3.2 footnote 5 and encoder paragraph",
+      "departure": "the frozen encoder is a compact three-dimensional convolutional trunk with a trainable envelope adapter rather than the cited foundation model itself",
+      "why": "the cited weights are distributed outside this repository; the encoder interface, its frozen trunk and its two heads are kept so the adapter can be replaced by the cited model without touching the pipeline"
+    },
+    {
+      "paper_location": "Sec. 3.3 tip tolerance",
+      "departure": "the envelope segmentation tolerance is set to 0.10 mm",
+      "why": "the manuscript states the 4.44 mm tip-tracking tolerance but not the segmentation tolerance; the band is therefore an engineering default exposed in configs/traces/uncertainty.yaml"
+    },
+    {
+      "paper_location": "Sec. 3.4 opening",
+      "departure": "the ladder depth defaults to four rungs and the deepest tested depth is six",
+      "why": "the manuscript reports a depth-sensitivity row at K = 6 but does not print the default depth, the threshold grid or the weight scheme"
+    },
+    {
+      "paper_location": "Sec. 3.4 opening",
+      "departure": "the ladder weights use a geometric scheme with ratio 0.6, normalised to one",
+      "why": "the manuscript states the weights are fixed and non-negative without printing them"
+    },
+    {
+      "paper_location": "Sec. 3.5 opening",
+      "departure": "the per-stratum overlap floor defaults to 0.02, about one sixth of the uniform behaviour share over the eight-strategy library",
+      "why": "the manuscript fixes the floor in the analysis plan and does not print its value"
+    },
+    {
+      "paper_location": "Sec. 3.1 decision rule and Sec. 3.4 bounds",
+      "departure": "the analysis-plan risk margin defaults to 0.01, the level delta to 0.05 and the bounded rung range to 1.0",
+      "why": "none of the three is printed, and the deviation bound of Eq. (7) cannot be evaluated without them"
+    },
+    {
+      "paper_location": "Sec. 4.3 and Table 3",
+      "departure": "the clipping grid is 0.02, 0.10 and 0.50 with the most aggressive end as the headline, and the pessimism grid is 0.001 and 0.5 with the pessimistic end as the headline",
+      "why": "the manuscript states the sweep exists and prints its endpoints' labels, not the clipping values"
+    },
+    {
+      "paper_location": "Sec. 3.7 final paragraph",
+      "departure": "the reported fits use the optimiser, schedule and seeds in configs/fit with batch 256, 40 epochs and a cosine schedule",
+      "why": "the manuscript reports no training hyperparameters and only states that the seeds are hard-wired and that a single processor graphics node is used"
+    },
+    {
+      "paper_location": "Sec. 3.6 first paragraph and Data availability",
+      "departure": "cohort-level values are produced on the cohort the release assembles for itself rather than on the private cohort",
+      "why": "the record-level source data are not shared; every cohort table value is therefore absent and the assembled cohort carries the same data dictionary"
+    },
+    {
+      "paper_location": "Sec. 3.3",
+      "departure": "the excursion sequence over the advancement steps is reconstructed as a monotone rise to the recorded peak",
+      "why": "the record carries the peak and the event stream rather than a per-step excursion, so the rise is an engineering default used only by the hazard head"
+    },
+    {
+      "paper_location": "Sec. 4.6",
+      "departure": "the three-arm reading study is executed over a reader ensemble with the structure the manuscript describes",
+      "why": "the cohort's reader outcomes are not shared, so no reader-level result can be reported"
+    },
+    {
+      "paper_location": "Sec. 4.4 panel B caption",
+      "departure": "the public logged corpora are listed with their licences and sources but not downloaded, so their rows carry no value",
+      "why": "the row values depend on corpora the release does not fetch, and no honest substitute for a downloaded benchmark exists"
+    },
+    {
+      "paper_location": "Sec. 4.4 panel A and column 5",
+      "departure": "the rarest-rung event budget is exercised by withdrawing top-rung indicators while keeping every record in the log",
+      "why": "the manuscript describes holding the record count fixed while the rarest-rung count moves, which is what withdrawing the indicator reproduces"
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "eq1_excursion_observable",
+      "statement": "h_t is the non-negative distance of the reconstructed wire body beyond the lumen boundary",
+      "paper_location": "Sec. 3.1, Eq. (1)",
+      "code_symbols": [
+        "wireope.geometry.envelope.LumenEnvelope.excursion",
+        "wireope.geometry.vessel.VesselGeometry.analytic_excursion_mm",
+        "wireope.traces.excursion.excursion_series"
+      ],
+      "status": "PASS",
+      "probe": "geometry.analytic_excursion_matches_discretised_field",
+      "probe_value": null,
+      "expected": null,
+      "estimator_stated": true,
+      "note": "",
+      "evidence": {}
+    },
+    {
+      "claim_id": "eq2_selection_with_abstention",
+      "statement": "the primary decision maximises net benefit over the eligible library subject to a risk limit and abstains otherwise",
+      "paper_location": "Sec. 3.1, Eq. (2)",
+      "code_symbols": [
+        "wireope.certification.rule.select_constrained",
+        "wireope.certification.eligibility.evaluate_floor"
+      ],
+      "status": "PASS",
+      "probe": "certification.rule_matches_brute_force_argmax",
+      "probe_value": null,
+      "expected": null,
+      "estimator_stated": true,
+      "note": "the release follows the lower-limit form of Eq. (2); the divergence from Eq. (5) is a recorded manuscript finding",
+      "evidence": {}
+    },
+    {
+      "claim_id": "eq3_graded_and_risk_functionals",
+      "statement": "the graded crossing value and the injury risk functional are the weighted rung sum and the top rung",
+      "paper_location": "Sec. 3.1, Eq. (3)",
+      "code_symbols": [
+        "wireope.laddering.severity.Ladder.graded_value",
+        "wireope.laddering.severity.Ladder.risk",
+        "wireope.estimators.nested_dr.graded_progress_value"
+      ],
+      "status": "PASS",
+      "probe": "ladder.nesting_matches_brute_force",
+      "probe_value": null,
+      "expected": null,
+      "estimator_stated": true,
+      "note": "the release estimates the rung marginals with Eq. (4) and reads the utility as the graded progress on the same ladder, because the printed sign of Eq. (3) opposes Eq. (2)",
+      "evidence": {}
+    },
+    {
+      "claim_id": "eq4_nested_doubly_robust",
+      "statement": "the estimator adds a fitted rung-wise outcome model to an importance-weighted residual correction at every rung",
+      "paper_location": "Sec. 3.1, Eq. (4)",
+      "code_symbols": [
+        "wireope.estimators.nested_dr.nested_doubly_robust",
+        "wireope.estimators.nested_dr.NestedWeightedDoublyRobust"
+      ],
+      "status": "PASS",
+      "probe": "estimators.nested_dr_recovers_known_functionals",
+      "probe_value": null,
+      "expected": null,
+      "estimator_stated": true,
+      "note": "",
+      "evidence": {}
+    },
+    {
+      "claim_id": "eq5_support_constrained_lcb",
+      "statement": "the certified strategy maximises a lower confidence limit of the estimator over the support-feasible library subject to an upper limit on the risk",
+      "paper_location": "Sec. 3.1, Eq. (5)",
+      "code_symbols": [
+        "wireope.certification.rule.select_constrained",
+        "wireope.certification.eligibility.eligible_strategies",
+        "wireope.bounds.interval"
+      ],
+      "status": "NOT_RUN",
+      "probe": "",
+      "probe_value": null,
+      "expected": null,
+      "estimator_stated": true,
+      "note": "Eq. (5) writes the risk constraint as an upper limit while Eq. (2) writes it as a lower limit; the release implements Eq. (2)'s direction and records the conflict",
+      "evidence": {}
+    },
+    {
+      "claim_id": "eq6_product_risk",
+      "statement": "the endpoint risk is the product of the per-rung conditional outcomes",
+      "paper_location": "Sec. 3.4, Eq. (6)",
+      "code_symbols": [
+        "wireope.estimators.nested_dr.product_risk_from_marginals",
+        "wireope.fit.outcome.RungOutcomeModel.product_risk"
+      ],
+      "status": "PASS",
+      "probe": "estimators.product_risk_reconstructs_the_endpoint",
+      "probe_value": null,
+      "expected": null,
+      "estimator_stated": true,
+      "note": "",
+      "evidence": {}
+    },
+    {
+      "claim_id": "eq7_hoeffding_deviation_bound",
+      "statement": "the deviation of the product estimator is bounded by the union-bound term over the rarest-rung effective count plus a truncation term",
+      "paper_location": "Sec. 3.4, Eq. (7)",
+      "code_symbols": [
+        "wireope.bounds.hoeffding.hoeffding_bound",
+        "wireope.bounds.hoeffding.effective_sample_size_minimum",
+        "wireope.bounds.hoeffding.design_event_requirement"
+      ],
+      "status": "PASS",
+      "probe": "bounds.hoeffding_radius_matches_closed_form",
+      "probe_value": null,
+      "expected": null,
+      "estimator_stated": true,
+      "note": "",
+      "evidence": {}
+    },
+    {
+      "claim_id": "appendix_a_empirical_bernstein",
+      "statement": "the reported form of the bound replaces the worst-case variance by the observed residual and adds a small-sample correction",
+      "paper_location": "Sec. 3.4 final paragraph and Appendix A",
+      "code_symbols": [
+        "wireope.bounds.empirical_bernstein.empirical_bernstein_bound",
+        "wireope.bounds.empirical_bernstein.agrees_with_hoeffding_at_maximum_variance"
+      ],
+      "status": "PASS",
+      "probe": "bounds.bernstein_leading_term_equals_hoeffding_at_maximum_variance",
+      "probe_value": null,
+      "expected": null,
+      "estimator_stated": true,
+      "note": "",
+      "evidence": {}
+    },
+    {
+      "claim_id": "sec3_2_frozen_ct_encoder",
+      "statement": "a frozen three-dimensional computed-tomography encoder establishes the measurable lumen limit on the training subset",
+      "paper_location": "Sec. 3.2 opening",
+      "code_symbols": [
+        "wireope.geometry.encoder.EnvelopeEncoder",
+        "wireope.geometry.encoder.EnvelopeEncoder.freeze_trunk"
+      ],
+      "status": "PASS",
+      "probe": "fit.encoder_trunk_is_frozen_while_the_adapter_learns",
+      "probe_value": null,
+      "expected": null,
+      "estimator_stated": true,
+      "note": "",
+      "evidence": {}
+    },
+    {
+      "claim_id": "sec3_3_propagating_band",
+      "statement": "the tip-tracking tolerance and the envelope segmentation tolerance combine into the band that governs rung resolution",
+      "paper_location": "Sec. 3.3 last paragraph",
+      "code_symbols": [
+        "wireope.traces.excursion.propagating_band",
+        "wireope.laddering.resolution.check_resolution"
+      ],
+      "status": "PASS",
+      "probe": "traces.propagating_band_quadrature",
+      "probe_value": null,
+      "expected": null,
+      "estimator_stated": true,
+      "note": "the manuscript states the 4.44 mm tip tolerance and not the segmentation tolerance, so the latter is an engineering default",
+      "evidence": {}
+    },
+    {
+      "claim_id": "sec3_4_binomial_rung_level_model",
+      "statement": "consecutive conditional rung frequencies sit in a tolerable range and the top rung is the observed injury event",
+      "paper_location": "Sec. 3.4 opening",
+      "code_symbols": [
+        "wireope.cohort.release_cohort.rung_probability",
+        "wireope.cohort.release_cohort.sample_peak_excursion"
+      ],
+      "status": "PASS",
+      "probe": "ladder.conditional_frequencies_inside_declared_band",
+      "probe_value": null,
+      "expected": null,
+      "estimator_stated": true,
+      "note": "",
+      "evidence": {}
+    },
+    {
+      "claim_id": "sec3_5_event_wise_floor",
+      "statement": "the behaviour policy must clear a per-stratum, per-rung mass floor before a strategy is eligible",
+      "paper_location": "Sec. 3.5 opening",
+      "code_symbols": [
+        "wireope.certification.eligibility.evaluate_floor",
+        "wireope.certification.eligibility.stratum_rung_mass"
+      ],
+      "status": "PASS",
+      "probe": "certification.floor_matches_brute_force_mass",
+      "probe_value": null,
+      "expected": null,
+      "estimator_stated": true,
+      "note": "the floor value is an engineering default; the manuscript fixes it in the analysis plan but does not print it",
+      "evidence": {}
+    },
+    {
+      "claim_id": "sec3_6_whole_site_holdout",
+      "statement": "the primary external setting holds out a whole site and region, and a disjoint calibration share fits weights and thresholds",
+      "paper_location": "Sec. 3.6 fourth paragraph",
+      "code_symbols": [
+        "wireope.cohort.partitions.build_partitions",
+        "wireope.cohort.partitions.audit_leakage",
+        "wireope.studies.pipeline.prepare_context"
+      ],
+      "status": "PASS",
+      "probe": "cohort.partitions_clear_every_leakage_guard",
+      "probe_value": null,
+      "expected": null,
+      "estimator_stated": true,
+      "note": "",
+      "evidence": {}
+    },
+    {
+      "claim_id": "sec3_7_reporting_standard",
+      "statement": "discrimination is reported as an AUROC with a 95% interval, calibration on the higher-is-better scale with slope and intercept, and net benefit over a threshold grid",
+      "paper_location": "Sec. 3.7 first paragraph",
+      "code_symbols": [
+        "wireope.metrics.discrimination.delong_interval",
+        "wireope.metrics.calibration.calibration_report",
+        "wireope.metrics.decision.net_benefit"
+      ],
+      "status": "PASS",
+      "probe": "metrics.auroc_matches_an_independent_library",
+      "probe_value": null,
+      "expected": null,
+      "estimator_stated": true,
+      "note": "",
+      "evidence": {}
+    },
+    {
+      "claim_id": "sec4_2_estimator_selected_from_overlap",
+      "statement": "the estimator is selected from the overlap regime rather than from an aggregate benchmark ranking, and the diagnostic travels with the estimate",
+      "paper_location": "Sec. 3.4 and Sec. 4.2",
+      "code_symbols": [
+        "wireope.estimators.registry.run_bakeoff",
+        "wireope.studies.bakeoff.bakeoff_summary",
+        "wireope.bounds.effective_sample.overlap_coefficient"
+      ],
+      "status": "PASS",
+      "probe": "estimators.every_candidate_is_finite",
+      "probe_value": null,
+      "expected": null,
+      "estimator_stated": true,
+      "note": "",
+      "evidence": {}
+    },
+    {
+      "claim_id": "sec4_4_positive_event_budget",
+      "statement": "reliability is governed by the effective count of positive events at the rarest rung rather than by the number of records",
+      "paper_location": "Sec. 4.4 and Sec. 5 second paragraph",
+      "code_symbols": [
+        "wireope.studies.tables.event_budget_table",
+        "wireope.bounds.hoeffding.effective_sample_size_minimum"
+      ],
+      "status": "PASS",
+      "probe": "bounds.radius_invariant_to_shallower_rung_records",
+      "probe_value": null,
+      "expected": null,
+      "estimator_stated": true,
+      "note": "",
+      "evidence": {}
+    },
+    {
+      "claim_id": "sec4_5_behaviour_reconstruction_cost",
+      "statement": "because the behaviour policy is estimated rather than observed, its fidelity per site and per operator stratum is reported as an outcome",
+      "paper_location": "Sec. 3.5 final sentence and Sec. 4.5",
+      "code_symbols": [
+        "wireope.behavior.fidelity.fidelity_by_axis",
+        "wireope.behavior.fidelity.discretisation_sweep",
+        "wireope.behavior.fidelity.reconstruction_cost"
+      ],
+      "status": "NOT_RUN",
+      "probe": "",
+      "probe_value": null,
+      "expected": null,
+      "estimator_stated": true,
+      "note": "the reconstruction is exercised on the release cohort; no cohort fidelity value exists because the record-level log is not shared",
+      "evidence": {}
+    },
+    {
+      "claim_id": "sec4_6_clinician_arms",
+      "statement": "a three-arm reading study compares the clinician, the model and the clinician with the model under identical support diagnostics",
+      "paper_location": "Sec. 4.6 fourth paragraph",
+      "code_symbols": [
+        "wireope.studies.tables.clinician_arm_table",
+        "wireope.studies.tables._arm_metrics"
+      ],
+      "status": "NOT_RUN",
+      "probe": "",
+      "probe_value": null,
+      "expected": null,
+      "estimator_stated": true,
+      "note": "the reader-ensemble arms reproduce the reading study's structure; the cohort's reader outcomes are not shared",
+      "evidence": {}
+    },
+    {
+      "claim_id": "sec4_7_scaling_axes",
+      "statement": "the framework is reported along cohort fraction, site count, territory and vendor coverage with the rarest-rung event count annotated beside the record count",
+      "paper_location": "Sec. 4.7",
+      "code_symbols": [
+        "wireope.studies.tables.scaling_table"
+      ],
+      "status": "PASS",
+      "probe": "cohort.assembly_hits_the_event_targets",
+      "probe_value": null,
+      "expected": null,
+      "estimator_stated": true,
+      "note": "",
+      "evidence": {}
+    },
+    {
+      "claim_id": "data_private_multicentre_cohort",
+      "statement": "the evidence layer is a private anonymized multicentre cohort whose source records are not shared at record level",
+      "paper_location": "Sec. 3.6 first paragraph and Data availability",
+      "code_symbols": [
+        "configs/cohort/clinical.yaml",
+        "wireope.studies.pipeline.prepare_bundle"
+      ],
+      "status": "BLOCKED",
+      "probe": "data.private_cohort_record_level_availability",
+      "probe_value": null,
+      "expected": null,
+      "estimator_stated": true,
+      "note": "no cohort-level value can be produced; the executable science runs on the schema-release cohort",
+      "evidence": {}
+    },
+    {
+      "claim_id": "data_open_auxiliary_corpora",
+      "statement": "open auxiliary corpora supply pretraining and external segmentation comparison only",
+      "paper_location": "Sec. 3.2 footnotes 1-5",
+      "code_symbols": [
+        "configs/cohort/public_corpora.yaml",
+        "dataset_urls.txt"
+      ],
+      "status": "NOT_RUN",
+      "probe": "data.dataset_links_reachable",
+      "probe_value": null,
+      "expected": null,
+      "estimator_stated": true,
+      "note": "",
+      "evidence": {}
+    },
+    {
+      "claim_id": "data_public_logged_corpora",
+      "statement": "public logged corpora probe the estimator machinery outside the clinical cohort",
+      "paper_location": "Sec. 4.4 panel B caption",
+      "code_symbols": [
+        "wireope.studies.tables.public_corpus_rows"
+      ],
+      "status": "NOT_RUN",
+      "probe": "data.public_corpus_rows_are_transcription_targets",
+      "probe_value": null,
+      "expected": null,
+      "estimator_stated": true,
+      "note": "the corpora are not downloaded, so the rows stay transcription targets",
+      "evidence": {}
+    },
+    {
+      "claim_id": "data_arcade_lesion_labels",
+      "statement": "an auxiliary coronary angiography corpus supplies lesion labelling",
+      "paper_location": "Sec. 3.2 footnote 4",
+      "code_symbols": [
+        "configs/cohort/public_corpora.yaml"
+      ],
+      "status": "NOT_RUN",
+      "probe": "data.dataset_links_reachable",
+      "probe_value": null,
+      "expected": null,
+      "estimator_stated": false,
+      "note": "the canonical record describes x-ray angiography images rather than the CTA volumes the framework conditions on, so it enters no clinical claim",
+      "evidence": {}
+    },
+    {
+      "claim_id": "table_1_main_comparison::clinician_behaviour_policy",
+      "statement": "Table 1 row 'clinician_behaviour_policy' reports (0.741, 0.722, 0.76, 0.0326, 0.0512, 0.47, 2.86, 0.0)",
+      "paper_location": "Table 1 row 1",
+      "code_symbols": [
+        "wireope.studies.tables.comparison_table"
+      ],
+      "status": "NOT_RUN",
+      "probe": "",
+      "probe_value": null,
+      "expected": "(0.741, 0.722, 0.76, 0.0326, 0.0512, 0.47, 2.86, 0.0)",
+      "estimator_stated": true,
+      "note": "the value is printed for the private cohort; the release computes its own counterpart on the release cohort and never copies the printed number",
+      "evidence": {}
+    },
+    {
+      "claim_id": "table_1_main_comparison::anatomical_supervised_risk_score",
+      "statement": "Table 1 row 'anatomical_supervised_risk_score' reports (0.788, 0.775, 0.801, 0.0418, 0.0627, 0.524, 1.88, 0.0)",
+      "paper_location": "Table 1 row 2",
+      "code_symbols": [
+        "wireope.studies.tables.comparison_table"
+      ],
+      "status": "NOT_RUN",
+      "probe": "",
+      "probe_value": null,
+      "expected": "(0.788, 0.775, 0.801, 0.0418, 0.0627, 0.524, 1.88, 0.0)",
+      "estimator_stated": true,
+      "note": "the value is printed for the private cohort; the release computes its own counterpart on the release cohort and never copies the printed number",
+      "evidence": {}
+    },
+    {
+      "claim_id": "table_1_main_comparison::state_only_estimate",
+      "statement": "Table 1 row 'state_only_estimate' reports (0.779, 0.766, 0.792, 0.0391, 0.0574, 0.512, 2.04, 0.0)",
+      "paper_location": "Table 1 row 3",
+      "code_symbols": [
+        "wireope.studies.tables.comparison_table"
+      ],
+      "status": "NOT_RUN",
+      "probe": "",
+      "probe_value": null,
+      "expected": "(0.779, 0.766, 0.792, 0.0391, 0.0574, 0.512, 2.04, 0.0)",
+      "estimator_stated": true,
+      "note": "the value is printed for the private cohort; the release computes its own counterpart on the release cohort and never copies the printed number",
+      "evidence": {}
+    },
+    {
+      "claim_id": "table_1_main_comparison::unconstrained_argmax_estimator",
+      "statement": "Table 1 row 'unconstrained_argmax_estimator' reports (0.793, 0.78, 0.806, 0.0427, 0.0648, 0.556, 2.31, 0.0)",
+      "paper_location": "Table 1 row 4",
+      "code_symbols": [
+        "wireope.studies.tables.comparison_table"
+      ],
+      "status": "NOT_RUN",
+      "probe": "",
+      "probe_value": null,
+      "expected": "(0.793, 0.78, 0.806, 0.0427, 0.0648, 0.556, 2.31, 0.0)",
+      "estimator_stated": true,
+      "note": "the value is printed for the private cohort; the release computes its own counterpart on the release cohort and never copies the printed number",
+      "evidence": {}
+    },
+    {
+      "claim_id": "table_1_main_comparison::best_aggregate_hybrid_estimator_family",
+      "statement": "Table 1 row 'best_aggregate_hybrid_estimator_family' reports (0.781, 0.768, 0.794, 0.0402, 0.0591, 0.508, 2.47, 0.0)",
+      "paper_location": "Table 1 row 5",
+      "code_symbols": [
+        "wireope.studies.tables.comparison_table"
+      ],
+      "status": "NOT_RUN",
+      "probe": "",
+      "probe_value": null,
+      "expected": "(0.781, 0.768, 0.794, 0.0402, 0.0591, 0.508, 2.47, 0.0)",
+      "estimator_stated": true,
+      "note": "the value is printed for the private cohort; the release computes its own counterpart on the release cohort and never copies the printed number",
+      "evidence": {}
+    },
+    {
+      "claim_id": "table_1_main_comparison::direct_or_kernel_family_estimator",
+      "statement": "Table 1 row 'direct_or_kernel_family_estimator' reports (0.789, 0.776, 0.802, 0.0421, 0.0633, 0.539, 2.12, 0.0)",
+      "paper_location": "Table 1 row 6",
+      "code_symbols": [
+        "wireope.studies.tables.comparison_table"
+      ],
+      "status": "NOT_RUN",
+      "probe": "",
+      "probe_value": null,
+      "expected": "(0.789, 0.776, 0.802, 0.0421, 0.0633, 0.539, 2.12, 0.0)",
+      "estimator_stated": true,
+      "note": "the value is printed for the private cohort; the release computes its own counterpart on the release cohort and never copies the printed number",
+      "evidence": {}
+    },
+    {
+      "claim_id": "table_1_main_comparison::support_constrained_nested_excursion_rule",
+      "statement": "Table 1 row 'support_constrained_nested_excursion_rule' reports (0.792, 0.779, 0.805, 0.0431, 0.0664, 0.552, 0.84, 6.2)",
+      "paper_location": "Table 1 row 7",
+      "code_symbols": [
+        "wireope.studies.tables.comparison_table"
+      ],
+      "status": "NOT_RUN",
+      "probe": "",
+      "probe_value": null,
+      "expected": "(0.792, 0.779, 0.805, 0.0431, 0.0664, 0.552, 0.84, 6.2)",
+      "estimator_stated": true,
+      "note": "the value is printed for the private cohort; the release computes its own counterpart on the release cohort and never copies the printed number",
+      "evidence": {}
+    },
+    {
+      "claim_id": "table_2_panel_a_ablation::full_framework",
+      "statement": "Table 2 panel A row 'full_framework' reports (0.0, 0.0, 1.0, 412, 0.612)",
+      "paper_location": "Table 2 panel A row 1",
+      "code_symbols": [
+        "wireope.studies.ablation.ablation_table"
+      ],
+      "status": "NOT_RUN",
+      "probe": "",
+      "probe_value": null,
+      "expected": "(0.0, 0.0, 1.0, 412, 0.612)",
+      "estimator_stated": true,
+      "note": "the value is printed for the private cohort; the release computes its own counterpart on the release cohort and never copies the printed number",
+      "evidence": {}
+    },
+    {
+      "claim_id": "table_2_panel_a_ablation::without_envelope_excursion_reconstruction",
+      "statement": "Table 2 panel A row 'without_envelope_excursion_reconstruction' reports (-4.0, 1.34, 1.0, 388, 0.594)",
+      "paper_location": "Table 2 panel A row 2",
+      "code_symbols": [
+        "wireope.studies.ablation.ablation_table"
+      ],
+      "status": "NOT_RUN",
+      "probe": "",
+      "probe_value": null,
+      "expected": "(-4.0, 1.34, 1.0, 388, 0.594)",
+      "estimator_stated": true,
+      "note": "the value is printed for the private cohort; the release computes its own counterpart on the release cohort and never copies the printed number",
+      "evidence": {}
+    },
+    {
+      "claim_id": "table_2_panel_a_ablation::without_nested_excursion_ladder",
+      "statement": "Table 2 panel A row 'without_nested_excursion_ladder' reports (-3.1, 1.02, 1.0, 371, 0.587)",
+      "paper_location": "Table 2 panel A row 3",
+      "code_symbols": [
+        "wireope.studies.ablation.ablation_table"
+      ],
+      "status": "NOT_RUN",
+      "probe": "",
+      "probe_value": null,
+      "expected": "(-3.1, 1.02, 1.0, 371, 0.587)",
+      "estimator_stated": true,
+      "note": "the value is printed for the private cohort; the release computes its own counterpart on the release cohort and never copies the printed number",
+      "evidence": {}
+    },
+    {
+      "claim_id": "table_2_panel_a_ablation::without_support_constraint",
+      "statement": "Table 2 panel A row 'without_support_constraint' reports (0.4, 1.47, 1.0, 421, 0.617)",
+      "paper_location": "Table 2 panel A row 4",
+      "code_symbols": [
+        "wireope.studies.ablation.ablation_table"
+      ],
+      "status": "NOT_RUN",
+      "probe": "",
+      "probe_value": null,
+      "expected": "(0.4, 1.47, 1.0, 421, 0.617)",
+      "estimator_stated": true,
+      "note": "the value is printed for the private cohort; the release computes its own counterpart on the release cohort and never copies the printed number",
+      "evidence": {}
+    },
+    {
+      "claim_id": "table_2_panel_a_ablation::without_reconstruction_and_without_ladder",
+      "statement": "Table 2 panel A row 'without_reconstruction_and_without_ladder' reports (-7.9, 2.84, 1.2, 349, 0.56)",
+      "paper_location": "Table 2 panel A row 5",
+      "code_symbols": [
+        "wireope.studies.ablation.ablation_table"
+      ],
+      "status": "NOT_RUN",
+      "probe": "",
+      "probe_value": null,
+      "expected": "(-7.9, 2.84, 1.2, 349, 0.56)",
+      "estimator_stated": true,
+      "note": "the value is printed for the private cohort; the release computes its own counterpart on the release cohort and never copies the printed number",
+      "evidence": {}
+    },
+    {
+      "claim_id": "table_2_panel_a_ablation::without_ladder_and_without_support",
+      "statement": "Table 2 panel A row 'without_ladder_and_without_support' reports (-4.6, 2.98, 1.2, 366, 0.571)",
+      "paper_location": "Table 2 panel A row 6",
+      "code_symbols": [
+        "wireope.studies.ablation.ablation_table"
+      ],
+      "status": "NOT_RUN",
+      "probe": "",
+      "probe_value": null,
+      "expected": "(-4.6, 2.98, 1.2, 366, 0.571)",
+      "estimator_stated": true,
+      "note": "the value is printed for the private cohort; the release computes its own counterpart on the release cohort and never copies the printed number",
+      "evidence": {}
+    },
+    {
+      "claim_id": "table_2_panel_a_ablation::without_reconstruction_and_without_support",
+      "statement": "Table 2 panel A row 'without_reconstruction_and_without_support' reports (-5.4, 3.42, 1.22, 379, 0.578)",
+      "paper_location": "Table 2 panel A row 7",
+      "code_symbols": [
+        "wireope.studies.ablation.ablation_table"
+      ],
+      "status": "NOT_RUN",
+      "probe": "",
+      "probe_value": null,
+      "expected": "(-5.4, 3.42, 1.22, 379, 0.578)",
+      "estimator_stated": true,
+      "note": "the value is printed for the private cohort; the release computes its own counterpart on the release cohort and never copies the printed number",
+      "evidence": {}
+    },
+    {
+      "claim_id": "table_2_panel_a_ablation::depth_sensitivity_deepest_ladder_tested",
+      "statement": "Table 2 panel A row 'depth_sensitivity_deepest_ladder_tested' reports (-0.9, 0.21, 1.0, 402, 0.606)",
+      "paper_location": "Table 2 panel A row 8",
+      "code_symbols": [
+        "wireope.studies.ablation.ablation_table"
+      ],
+      "status": "NOT_RUN",
+      "probe": "",
+      "probe_value": null,
+      "expected": "(-0.9, 0.21, 1.0, 402, 0.606)",
+      "estimator_stated": true,
+      "note": "the value is printed for the private cohort; the release computes its own counterpart on the release cohort and never copies the printed number",
+      "evidence": {}
+    },
+    {
+      "claim_id": "table_2_panel_b_bakeoff::is",
+      "statement": "Table 2 panel B row 'is' reports (0.372, 96, 0.318, 0.431, 6.3)",
+      "paper_location": "Table 2 panel B row 1",
+      "code_symbols": [
+        "wireope.studies.bakeoff.bakeoff_summary"
+      ],
+      "status": "NOT_RUN",
+      "probe": "",
+      "probe_value": null,
+      "expected": "(0.372, 96, 0.318, 0.431, 6.3)",
+      "estimator_stated": true,
+      "note": "the value is printed for the private cohort; the release computes its own counterpart on the release cohort and never copies the printed number",
+      "evidence": {}
+    },
+    {
+      "claim_id": "table_2_panel_b_bakeoff::pdis",
+      "statement": "Table 2 panel B row 'pdis' reports (0.301, 108, 0.351, 0.452, 11.1)",
+      "paper_location": "Table 2 panel B row 2",
+      "code_symbols": [
+        "wireope.studies.bakeoff.bakeoff_summary"
+      ],
+      "status": "NOT_RUN",
+      "probe": "",
+      "probe_value": null,
+      "expected": "(0.301, 108, 0.351, 0.452, 11.1)",
+      "estimator_stated": true,
+      "note": "the value is printed for the private cohort; the release computes its own counterpart on the release cohort and never copies the printed number",
+      "evidence": {}
+    },
+    {
+      "claim_id": "table_2_panel_b_bakeoff::pdis_w",
+      "statement": "Table 2 panel B row 'pdis_w' reports (0.221, 154, 0.428, 0.489, 18.8)",
+      "paper_location": "Table 2 panel B row 3",
+      "code_symbols": [
+        "wireope.studies.bakeoff.bakeoff_summary"
+      ],
+      "status": "NOT_RUN",
+      "probe": "",
+      "probe_value": null,
+      "expected": "(0.221, 154, 0.428, 0.489, 18.8)",
+      "estimator_stated": true,
+      "note": "the value is printed for the private cohort; the release computes its own counterpart on the release cohort and never copies the printed number",
+      "evidence": {}
+    },
+    {
+      "claim_id": "table_2_panel_b_bakeoff::wis",
+      "statement": "Table 2 panel B row 'wis' reports (0.198, 168, 0.441, 0.497, 20.4)",
+      "paper_location": "Table 2 panel B row 4",
+      "code_symbols": [
+        "wireope.studies.bakeoff.bakeoff_summary"
+      ],
+      "status": "NOT_RUN",
+      "probe": "",
+      "probe_value": null,
+      "expected": "(0.198, 168, 0.441, 0.497, 20.4)",
+      "estimator_stated": true,
+      "note": "the value is printed for the private cohort; the release computes its own counterpart on the release cohort and never copies the printed number",
+      "evidence": {}
+    },
+    {
+      "claim_id": "table_2_panel_b_bakeoff::dr",
+      "statement": "Table 2 panel B row 'dr' reports (0.176, 187, 0.466, 0.508, 24.6)",
+      "paper_location": "Table 2 panel B row 5",
+      "code_symbols": [
+        "wireope.studies.bakeoff.bakeoff_summary"
+      ],
+      "status": "NOT_RUN",
+      "probe": "",
+      "probe_value": null,
+      "expected": "(0.176, 187, 0.466, 0.508, 24.6)",
+      "estimator_stated": true,
+      "note": "the value is printed for the private cohort; the release computes its own counterpart on the release cohort and never copies the printed number",
+      "evidence": {}
+    },
+    {
+      "claim_id": "table_2_panel_b_bakeoff::wdr",
+      "statement": "Table 2 panel B row 'wdr' reports (0.162, 203, 0.481, 0.516, 26.2)",
+      "paper_location": "Table 2 panel B row 6",
+      "code_symbols": [
+        "wireope.studies.bakeoff.bakeoff_summary"
+      ],
+      "status": "NOT_RUN",
+      "probe": "",
+      "probe_value": null,
+      "expected": "(0.162, 203, 0.481, 0.516, 26.2)",
+      "estimator_stated": true,
+      "note": "the value is printed for the private cohort; the release computes its own counterpart on the release cohort and never copies the printed number",
+      "evidence": {}
+    },
+    {
+      "claim_id": "table_2_panel_b_bakeoff::magic",
+      "statement": "Table 2 panel B row 'magic' reports (0.191, 178, 0.458, 0.501, 22.9)",
+      "paper_location": "Table 2 panel B row 7",
+      "code_symbols": [
+        "wireope.studies.bakeoff.bakeoff_summary"
+      ],
+      "status": "NOT_RUN",
+      "probe": "",
+      "probe_value": null,
+      "expected": "(0.191, 178, 0.458, 0.501, 22.9)",
+      "estimator_stated": true,
+      "note": "the value is printed for the private cohort; the release computes its own counterpart on the release cohort and never copies the printed number",
+      "evidence": {}
+    },
+    {
+      "claim_id": "table_2_panel_b_bakeoff::fqe",
+      "statement": "Table 2 panel B row 'fqe' reports (0.138, 246, 0.523, 0.531, 30.0)",
+      "paper_location": "Table 2 panel B row 8",
+      "code_symbols": [
+        "wireope.studies.bakeoff.bakeoff_summary"
+      ],
+      "status": "NOT_RUN",
+      "probe": "",
+      "probe_value": null,
+      "expected": "(0.138, 246, 0.523, 0.531, 30.0)",
+      "estimator_stated": true,
+      "note": "the value is printed for the private cohort; the release computes its own counterpart on the release cohort and never copies the printed number",
+      "evidence": {}
+    },
+    {
+      "claim_id": "table_2_panel_b_bakeoff::kernel_ih",
+      "statement": "Table 2 panel B row 'kernel_ih' reports (0.121, 289, 0.561, 0.539, 41.7)",
+      "paper_location": "Table 2 panel B row 9",
+      "code_symbols": [
+        "wireope.studies.bakeoff.bakeoff_summary"
+      ],
+      "status": "NOT_RUN",
+      "probe": "",
+      "probe_value": null,
+      "expected": "(0.121, 289, 0.561, 0.539, 41.7)",
+      "estimator_stated": true,
+      "note": "the value is printed for the private cohort; the release computes its own counterpart on the release cohort and never copies the printed number",
+      "evidence": {}
+    },
+    {
+      "claim_id": "table_3_stratified_weight_control::anatomical_stage_I",
+      "statement": "Table 3 row 'anatomical_stage_I' reports (0.084, 930, 0.628, 0.601)",
+      "paper_location": "Table 3 row 1",
+      "code_symbols": [
+        "wireope.studies.tables.weight_control_table"
+      ],
+      "status": "NOT_RUN",
+      "probe": "",
+      "probe_value": null,
+      "expected": "(0.084, 930, 0.628, 0.601)",
+      "estimator_stated": true,
+      "note": "the value is printed for the private cohort; the release computes its own counterpart on the release cohort and never copies the printed number",
+      "evidence": {}
+    },
+    {
+      "claim_id": "table_3_stratified_weight_control::anatomical_stage_II",
+      "statement": "Table 3 row 'anatomical_stage_II' reports (0.129, 703, 0.542, 0.549)",
+      "paper_location": "Table 3 row 2",
+      "code_symbols": [
+        "wireope.studies.tables.weight_control_table"
+      ],
+      "status": "NOT_RUN",
+      "probe": "",
+      "probe_value": null,
+      "expected": "(0.129, 703, 0.542, 0.549)",
+      "estimator_stated": true,
+      "note": "the value is printed for the private cohort; the release computes its own counterpart on the release cohort and never copies the printed number",
+      "evidence": {}
+    },
+    {
+      "claim_id": "table_3_stratified_weight_control::anatomical_stage_III",
+      "statement": "Table 3 row 'anatomical_stage_III' reports (0.211, 429, 0.418, 0.482)",
+      "paper_location": "Table 3 row 3",
+      "code_symbols": [
+        "wireope.studies.tables.weight_control_table"
+      ],
+      "status": "NOT_RUN",
+      "probe": "",
+      "probe_value": null,
+      "expected": "(0.211, 429, 0.418, 0.482)",
+      "estimator_stated": true,
+      "note": "the value is printed for the private cohort; the release computes its own counterpart on the release cohort and never copies the printed number",
+      "evidence": {}
+    },
+    {
+      "claim_id": "table_3_stratified_weight_control::calcification_grade_0_1",
+      "statement": "Table 3 row 'calcification_grade_0_1' reports (0.091, 889, 0.611, 0.588)",
+      "paper_location": "Table 3 row 4",
+      "code_symbols": [
+        "wireope.studies.tables.weight_control_table"
+      ],
+      "status": "NOT_RUN",
+      "probe": "",
+      "probe_value": null,
+      "expected": "(0.091, 889, 0.611, 0.588)",
+      "estimator_stated": true,
+      "note": "the value is printed for the private cohort; the release computes its own counterpart on the release cohort and never copies the printed number",
+      "evidence": {}
+    },
+    {
+      "claim_id": "table_3_stratified_weight_control::calcification_grade_2_3",
+      "statement": "Table 3 row 'calcification_grade_2_3' reports (0.148, 634, 0.512, 0.537)",
+      "paper_location": "Table 3 row 5",
+      "code_symbols": [
+        "wireope.studies.tables.weight_control_table"
+      ],
+      "status": "NOT_RUN",
+      "probe": "",
+      "probe_value": null,
+      "expected": "(0.148, 634, 0.512, 0.537)",
+      "estimator_stated": true,
+      "note": "the value is printed for the private cohort; the release computes its own counterpart on the release cohort and never copies the printed number",
+      "evidence": {}
+    },
+    {
+      "claim_id": "table_3_stratified_weight_control::calcification_grade_4",
+      "statement": "Table 3 row 'calcification_grade_4' reports (0.238, 371, 0.386, 0.461)",
+      "paper_location": "Table 3 row 6",
+      "code_symbols": [
+        "wireope.studies.tables.weight_control_table"
+      ],
+      "status": "NOT_RUN",
+      "probe": "",
+      "probe_value": null,
+      "expected": "(0.238, 371, 0.386, 0.461)",
+      "estimator_stated": true,
+      "note": "the value is printed for the private cohort; the release computes its own counterpart on the release cohort and never copies the printed number",
+      "evidence": {}
+    },
+    {
+      "claim_id": "table_3_stratified_weight_control::femoropopliteal_territory",
+      "statement": "Table 3 row 'femoropopliteal_territory' reports (0.113, 778, 0.574, 0.571)",
+      "paper_location": "Table 3 row 7",
+      "code_symbols": [
+        "wireope.studies.tables.weight_control_table"
+      ],
+      "status": "NOT_RUN",
+      "probe": "",
+      "probe_value": null,
+      "expected": "(0.113, 778, 0.574, 0.571)",
+      "estimator_stated": true,
+      "note": "the value is printed for the private cohort; the release computes its own counterpart on the release cohort and never copies the printed number",
+      "evidence": {}
+    },
+    {
+      "claim_id": "table_3_stratified_weight_control::tibial_territory",
+      "statement": "Table 3 row 'tibial_territory' reports (0.184, 488, 0.442, 0.498)",
+      "paper_location": "Table 3 row 8",
+      "code_symbols": [
+        "wireope.studies.tables.weight_control_table"
+      ],
+      "status": "NOT_RUN",
+      "probe": "",
+      "probe_value": null,
+      "expected": "(0.184, 488, 0.442, 0.498)",
+      "estimator_stated": true,
+      "note": "the value is printed for the private cohort; the release computes its own counterpart on the release cohort and never copies the printed number",
+      "evidence": {}
+    },
+    {
+      "claim_id": "table_3_stratified_weight_control::site_A_region_I",
+      "statement": "Table 3 row 'site_A_region_I' reports (0.118, 754, 0.566, 0.562)",
+      "paper_location": "Table 3 row 9",
+      "code_symbols": [
+        "wireope.studies.tables.weight_control_table"
+      ],
+      "status": "NOT_RUN",
+      "probe": "",
+      "probe_value": null,
+      "expected": "(0.118, 754, 0.566, 0.562)",
+      "estimator_stated": true,
+      "note": "the value is printed for the private cohort; the release computes its own counterpart on the release cohort and never copies the printed number",
+      "evidence": {}
+    },
+    {
+      "claim_id": "table_3_stratified_weight_control::site_B_region_II",
+      "statement": "Table 3 row 'site_B_region_II' reports (0.136, 683, 0.531, 0.545)",
+      "paper_location": "Table 3 row 10",
+      "code_symbols": [
+        "wireope.studies.tables.weight_control_table"
+      ],
+      "status": "NOT_RUN",
+      "probe": "",
+      "probe_value": null,
+      "expected": "(0.136, 683, 0.531, 0.545)",
+      "estimator_stated": true,
+      "note": "the value is printed for the private cohort; the release computes its own counterpart on the release cohort and never copies the printed number",
+      "evidence": {}
+    },
+    {
+      "claim_id": "table_3_stratified_weight_control::site_C_region_III",
+      "statement": "Table 3 row 'site_C_region_III' reports (0.152, 637, 0.509, 0.534)",
+      "paper_location": "Table 3 row 11",
+      "code_symbols": [
+        "wireope.studies.tables.weight_control_table"
+      ],
+      "status": "NOT_RUN",
+      "probe": "",
+      "probe_value": null,
+      "expected": "(0.152, 637, 0.509, 0.534)",
+      "estimator_stated": true,
+      "note": "the value is printed for the private cohort; the release computes its own counterpart on the release cohort and never copies the printed number",
+      "evidence": {}
+    },
+    {
+      "claim_id": "table_3_stratified_weight_control::clipping_least_aggressive",
+      "statement": "Table 3 row 'clipping_least_aggressive' reports (0.243, 358, 0.379, 0.455)",
+      "paper_location": "Table 3 row 12",
+      "code_symbols": [
+        "wireope.studies.tables.weight_control_table"
+      ],
+      "status": "NOT_RUN",
+      "probe": "",
+      "probe_value": null,
+      "expected": "(0.243, 358, 0.379, 0.455)",
+      "estimator_stated": true,
+      "note": "the value is printed for the private cohort; the release computes its own counterpart on the release cohort and never copies the printed number",
+      "evidence": {}
+    },
+    {
+      "claim_id": "table_3_stratified_weight_control::clipping_intermediate",
+      "statement": "Table 3 row 'clipping_intermediate' reports (0.131, 694, 0.539, 0.551)",
+      "paper_location": "Table 3 row 13",
+      "code_symbols": [
+        "wireope.studies.tables.weight_control_table"
+      ],
+      "status": "NOT_RUN",
+      "probe": "",
+      "probe_value": null,
+      "expected": "(0.131, 694, 0.539, 0.551)",
+      "estimator_stated": true,
+      "note": "the value is printed for the private cohort; the release computes its own counterpart on the release cohort and never copies the printed number",
+      "evidence": {}
+    },
+    {
+      "claim_id": "table_3_stratified_weight_control::clipping_most_aggressive",
+      "statement": "Table 3 row 'clipping_most_aggressive' reports (0.089, 877, 0.607, 0.583)",
+      "paper_location": "Table 3 row 14",
+      "code_symbols": [
+        "wireope.studies.tables.weight_control_table"
+      ],
+      "status": "NOT_RUN",
+      "probe": "",
+      "probe_value": null,
+      "expected": "(0.089, 877, 0.607, 0.583)",
+      "estimator_stated": true,
+      "note": "the value is printed for the private cohort; the release computes its own counterpart on the release cohort and never copies the printed number",
+      "evidence": {}
+    },
+    {
+      "claim_id": "table_3_stratified_weight_control::pessimism_alpha_0_001",
+      "statement": "Table 3 row 'pessimism_alpha_0_001' reports (0.097, 857, 0.598, 0.578)",
+      "paper_location": "Table 3 row 15",
+      "code_symbols": [
+        "wireope.studies.tables.weight_control_table"
+      ],
+      "status": "NOT_RUN",
+      "probe": "",
+      "probe_value": null,
+      "expected": "(0.097, 857, 0.598, 0.578)",
+      "estimator_stated": true,
+      "note": "the value is printed for the private cohort; the release computes its own counterpart on the release cohort and never copies the printed number",
+      "evidence": {}
+    },
+    {
+      "claim_id": "table_3_stratified_weight_control::pessimism_alpha_0_5",
+      "statement": "Table 3 row 'pessimism_alpha_0_5' reports (0.206, 444, 0.412, 0.487)",
+      "paper_location": "Table 3 row 16",
+      "code_symbols": [
+        "wireope.studies.tables.weight_control_table"
+      ],
+      "status": "NOT_RUN",
+      "probe": "",
+      "probe_value": null,
+      "expected": "(0.206, 444, 0.412, 0.487)",
+      "estimator_stated": true,
+      "note": "the value is printed for the private cohort; the release computes its own counterpart on the release cohort and never copies the printed number",
+      "evidence": {}
+    },
+    {
+      "claim_id": "table_4_panel_a_event_budget::events_5",
+      "statement": "Table 4 panel A row 'events_5' reports (0.412, 58, 0.298, 0.186)",
+      "paper_location": "Table 4 panel A row 1",
+      "code_symbols": [
+        "wireope.studies.tables.event_budget_table"
+      ],
+      "status": "NOT_RUN",
+      "probe": "",
+      "probe_value": null,
+      "expected": "(0.412, 58, 0.298, 0.186)",
+      "estimator_stated": true,
+      "note": "the value is printed for the private cohort; the release computes its own counterpart on the release cohort and never copies the printed number",
+      "evidence": {}
+    },
+    {
+      "claim_id": "table_4_panel_a_event_budget::events_10",
+      "statement": "Table 4 panel A row 'events_10' reports (0.301, 83, 0.414, 0.141)",
+      "paper_location": "Table 4 panel A row 2",
+      "code_symbols": [
+        "wireope.studies.tables.event_budget_table"
+      ],
+      "status": "NOT_RUN",
+      "probe": "",
+      "probe_value": null,
+      "expected": "(0.301, 83, 0.414, 0.141)",
+      "estimator_stated": true,
+      "note": "the value is printed for the private cohort; the release computes its own counterpart on the release cohort and never copies the printed number",
+      "evidence": {}
+    },
+    {
+      "claim_id": "table_4_panel_a_event_budget::events_15",
+      "statement": "Table 4 panel A row 'events_15' reports (0.207, 117, 0.485, 0.104)",
+      "paper_location": "Table 4 panel A row 3",
+      "code_symbols": [
+        "wireope.studies.tables.event_budget_table"
+      ],
+      "status": "NOT_RUN",
+      "probe": "",
+      "probe_value": null,
+      "expected": "(0.207, 117, 0.485, 0.104)",
+      "estimator_stated": true,
+      "note": "the value is printed for the private cohort; the release computes its own counterpart on the release cohort and never copies the printed number",
+      "evidence": {}
+    },
+    {
+      "claim_id": "table_4_panel_a_event_budget::events_20",
+      "statement": "Table 4 panel A row 'events_20' reports (0.154, 149, 0.531, 0.081)",
+      "paper_location": "Table 4 panel A row 4",
+      "code_symbols": [
+        "wireope.studies.tables.event_budget_table"
+      ],
+      "status": "NOT_RUN",
+      "probe": "",
+      "probe_value": null,
+      "expected": "(0.154, 149, 0.531, 0.081)",
+      "estimator_stated": true,
+      "note": "the value is printed for the private cohort; the release computes its own counterpart on the release cohort and never copies the printed number",
+      "evidence": {}
+    },
+    {
+      "claim_id": "table_4_panel_a_event_budget::events_30",
+      "statement": "Table 4 panel A row 'events_30' reports (0.103, 194, 0.549, 0.054)",
+      "paper_location": "Table 4 panel A row 5",
+      "code_symbols": [
+        "wireope.studies.tables.event_budget_table"
+      ],
+      "status": "NOT_RUN",
+      "probe": "",
+      "probe_value": null,
+      "expected": "(0.103, 194, 0.549, 0.054)",
+      "estimator_stated": true,
+      "note": "the value is printed for the private cohort; the release computes its own counterpart on the release cohort and never copies the printed number",
+      "evidence": {}
+    },
+    {
+      "claim_id": "table_4_panel_a_event_budget::events_40",
+      "statement": "Table 4 panel A row 'events_40' reports (0.098, 233, 0.555, 0.047)",
+      "paper_location": "Table 4 panel A row 6",
+      "code_symbols": [
+        "wireope.studies.tables.event_budget_table"
+      ],
+      "status": "NOT_RUN",
+      "probe": "",
+      "probe_value": null,
+      "expected": "(0.098, 233, 0.555, 0.047)",
+      "estimator_stated": true,
+      "note": "the value is printed for the private cohort; the release computes its own counterpart on the release cohort and never copies the printed number",
+      "evidence": {}
+    },
+    {
+      "claim_id": "table_4_panel_a_event_budget::events_60",
+      "statement": "Table 4 panel A row 'events_60' reports (0.092, 281, 0.554, 0.042)",
+      "paper_location": "Table 4 panel A row 7",
+      "code_symbols": [
+        "wireope.studies.tables.event_budget_table"
+      ],
+      "status": "NOT_RUN",
+      "probe": "",
+      "probe_value": null,
+      "expected": "(0.092, 281, 0.554, 0.042)",
+      "estimator_stated": true,
+      "note": "the value is printed for the private cohort; the release computes its own counterpart on the release cohort and never copies the printed number",
+      "evidence": {}
+    },
+    {
+      "claim_id": "table_4_panel_a_event_budget::events_80",
+      "statement": "Table 4 panel A row 'events_80' reports (0.095, 312, 0.557, 0.041)",
+      "paper_location": "Table 4 panel A row 8",
+      "code_symbols": [
+        "wireope.studies.tables.event_budget_table"
+      ],
+      "status": "NOT_RUN",
+      "probe": "",
+      "probe_value": null,
+      "expected": "(0.095, 312, 0.557, 0.041)",
+      "estimator_stated": true,
+      "note": "the value is printed for the private cohort; the release computes its own counterpart on the release cohort and never copies the printed number",
+      "evidence": {}
+    },
+    {
+      "claim_id": "table_4_panel_b_public_corpora::open_bandit",
+      "statement": "Table 4 panel B row 'open_bandit' reports (0.041, 1842, 0.742)",
+      "paper_location": "Table 4 panel B row 1",
+      "code_symbols": [
+        "wireope.studies.tables.public_corpus_rows"
+      ],
+      "status": "NOT_RUN",
+      "probe": "",
+      "probe_value": null,
+      "expected": "(0.041, 1842, 0.742)",
+      "estimator_stated": true,
+      "note": "the value is printed for the private cohort; the release computes its own counterpart on the release cohort and never copies the printed number",
+      "evidence": {}
+    },
+    {
+      "claim_id": "table_4_panel_b_public_corpora::neorl2",
+      "statement": "Table 4 panel B row 'neorl2' reports (0.096, 512, 0.628)",
+      "paper_location": "Table 4 panel B row 2",
+      "code_symbols": [
+        "wireope.studies.tables.public_corpus_rows"
+      ],
+      "status": "NOT_RUN",
+      "probe": "",
+      "probe_value": null,
+      "expected": "(0.096, 512, 0.628)",
+      "estimator_stated": true,
+      "note": "the value is printed for the private cohort; the release computes its own counterpart on the release cohort and never copies the printed number",
+      "evidence": {}
+    },
+    {
+      "claim_id": "table_4_panel_b_public_corpora::cobs",
+      "statement": "Table 4 panel B row 'cobs' reports (0.143, 341, 0.518)",
+      "paper_location": "Table 4 panel B row 3",
+      "code_symbols": [
+        "wireope.studies.tables.public_corpus_rows"
+      ],
+      "status": "NOT_RUN",
+      "probe": "",
+      "probe_value": null,
+      "expected": "(0.143, 341, 0.518)",
+      "estimator_stated": true,
+      "note": "the value is printed for the private cohort; the release computes its own counterpart on the release cohort and never copies the printed number",
+      "evidence": {}
+    },
+    {
+      "claim_id": "table_4_panel_b_public_corpora::deep_ope",
+      "statement": "Table 4 panel B row 'deep_ope' reports (0.131, 389, 0.539)",
+      "paper_location": "Table 4 panel B row 4",
+      "code_symbols": [
+        "wireope.studies.tables.public_corpus_rows"
+      ],
+      "status": "NOT_RUN",
+      "probe": "",
+      "probe_value": null,
+      "expected": "(0.131, 389, 0.539)",
+      "estimator_stated": true,
+      "note": "the value is printed for the private cohort; the release computes its own counterpart on the release cohort and never copies the printed number",
+      "evidence": {}
+    },
+    {
+      "claim_id": "table_4_panel_b_public_corpora::d4rl",
+      "statement": "Table 4 panel B row 'd4rl' reports (0.058, 1204, 0.701)",
+      "paper_location": "Table 4 panel B row 5",
+      "code_symbols": [
+        "wireope.studies.tables.public_corpus_rows"
+      ],
+      "status": "NOT_RUN",
+      "probe": "",
+      "probe_value": null,
+      "expected": "(0.058, 1204, 0.701)",
+      "estimator_stated": true,
+      "note": "the value is printed for the private cohort; the release computes its own counterpart on the release cohort and never copies the printed number",
+      "evidence": {}
+    },
+    {
+      "claim_id": "table_5_sitewise::site_A",
+      "statement": "Table 5 row 'site_A' reports (4842, 232, 0.795, 0.779, 0.811, 0.962, 0.0671, 0.79, 94.9)",
+      "paper_location": "Table 5 row 1",
+      "code_symbols": [
+        "wireope.studies.tables.sitewise_table"
+      ],
+      "status": "NOT_RUN",
+      "probe": "",
+      "probe_value": null,
+      "expected": "(4842, 232, 0.795, 0.779, 0.811, 0.962, 0.0671, 0.79, 94.9)",
+      "estimator_stated": true,
+      "note": "the value is printed for the private cohort; the release computes its own counterpart on the release cohort and never copies the printed number",
+      "evidence": {}
+    },
+    {
+      "claim_id": "table_5_sitewise::site_B",
+      "statement": "Table 5 row 'site_B' reports (3986, 190, 0.788, 0.771, 0.805, 0.957, 0.0652, 0.91, 94.6)",
+      "paper_location": "Table 5 row 2",
+      "code_symbols": [
+        "wireope.studies.tables.sitewise_table"
+      ],
+      "status": "NOT_RUN",
+      "probe": "",
+      "probe_value": null,
+      "expected": "(3986, 190, 0.788, 0.771, 0.805, 0.957, 0.0652, 0.91, 94.6)",
+      "estimator_stated": true,
+      "note": "the value is printed for the private cohort; the release computes its own counterpart on the release cohort and never copies the printed number",
+      "evidence": {}
+    },
+    {
+      "claim_id": "table_5_sitewise::site_C_held_out",
+      "statement": "Table 5 row 'site_C_held_out' reports (3172, 142, 0.792, 0.779, 0.805, 0.969, 0.0664, 0.84, 94.7)",
+      "paper_location": "Table 5 row 3",
+      "code_symbols": [
+        "wireope.studies.tables.sitewise_table"
+      ],
+      "status": "NOT_RUN",
+      "probe": "",
+      "probe_value": null,
+      "expected": "(3172, 142, 0.792, 0.779, 0.805, 0.969, 0.0664, 0.84, 94.7)",
+      "estimator_stated": true,
+      "note": "the value is printed for the private cohort; the release computes its own counterpart on the release cohort and never copies the printed number",
+      "evidence": {}
+    },
+    {
+      "claim_id": "table_5_sitewise::cross_region_site_B_held_out",
+      "statement": "Table 5 row 'cross_region_site_B_held_out' reports (3986, 190, 0.791, 0.78, 0.802, 0.966, 0.0659, 0.86, 94.8)",
+      "paper_location": "Table 5 row 4",
+      "code_symbols": [
+        "wireope.studies.tables.sitewise_table"
+      ],
+      "status": "NOT_RUN",
+      "probe": "",
+      "probe_value": null,
+      "expected": "(3986, 190, 0.791, 0.78, 0.802, 0.966, 0.0659, 0.86, 94.8)",
+      "estimator_stated": true,
+      "note": "the value is printed for the private cohort; the release computes its own counterpart on the release cohort and never copies the printed number",
+      "evidence": {}
+    },
+    {
+      "claim_id": "table_5_sitewise::pooled",
+      "statement": "Table 5 row 'pooled' reports (12000, 564, 0.793, 0.784, 0.802, 0.964, 0.0662, 0.85, 94.7)",
+      "paper_location": "Table 5 row 5",
+      "code_symbols": [
+        "wireope.studies.tables.sitewise_table"
+      ],
+      "status": "NOT_RUN",
+      "probe": "",
+      "probe_value": null,
+      "expected": "(12000, 564, 0.793, 0.784, 0.802, 0.964, 0.0662, 0.85, 94.7)",
+      "estimator_stated": true,
+      "note": "the value is printed for the private cohort; the release computes its own counterpart on the release cohort and never copies the printed number",
+      "evidence": {}
+    },
+    {
+      "claim_id": "table_5_sitewise::stratum_stage_I",
+      "statement": "Table 5 row 'stratum_stage_I' reports (1472, 41, 0.804, 0.783, 0.825, 0.971, 0.0703, 0.62, 95.2)",
+      "paper_location": "Table 5 row 6",
+      "code_symbols": [
+        "wireope.studies.tables.sitewise_table"
+      ],
+      "status": "NOT_RUN",
+      "probe": "",
+      "probe_value": null,
+      "expected": "(1472, 41, 0.804, 0.783, 0.825, 0.971, 0.0703, 0.62, 95.2)",
+      "estimator_stated": true,
+      "note": "the value is printed for the private cohort; the release computes its own counterpart on the release cohort and never copies the printed number",
+      "evidence": {}
+    },
+    {
+      "claim_id": "table_5_sitewise::stratum_stage_II",
+      "statement": "Table 5 row 'stratum_stage_II' reports (2266, 98, 0.796, 0.78, 0.812, 0.965, 0.0678, 0.78, 94.9)",
+      "paper_location": "Table 5 row 7",
+      "code_symbols": [
+        "wireope.studies.tables.sitewise_table"
+      ],
+      "status": "NOT_RUN",
+      "probe": "",
+      "probe_value": null,
+      "expected": "(2266, 98, 0.796, 0.78, 0.812, 0.965, 0.0678, 0.78, 94.9)",
+      "estimator_stated": true,
+      "note": "the value is printed for the private cohort; the release computes its own counterpart on the release cohort and never copies the printed number",
+      "evidence": {}
+    },
+    {
+      "claim_id": "table_5_sitewise::stratum_stage_III",
+      "statement": "Table 5 row 'stratum_stage_III' reports (1691, 109, 0.774, 0.754, 0.794, 0.952, 0.0612, 1.14, 94.1)",
+      "paper_location": "Table 5 row 8",
+      "code_symbols": [
+        "wireope.studies.tables.sitewise_table"
+      ],
+      "status": "NOT_RUN",
+      "probe": "",
+      "probe_value": null,
+      "expected": "(1691, 109, 0.774, 0.754, 0.794, 0.952, 0.0612, 1.14, 94.1)",
+      "estimator_stated": true,
+      "note": "the value is printed for the private cohort; the release computes its own counterpart on the release cohort and never copies the printed number",
+      "evidence": {}
+    },
+    {
+      "claim_id": "table_5_sitewise::stratum_calcification_4",
+      "statement": "Table 5 row 'stratum_calcification_4' reports (1238, 86, 0.771, 0.749, 0.793, 0.948, 0.0598, 1.21, 93.8)",
+      "paper_location": "Table 5 row 9",
+      "code_symbols": [
+        "wireope.studies.tables.sitewise_table"
+      ],
+      "status": "NOT_RUN",
+      "probe": "",
+      "probe_value": null,
+      "expected": "(1238, 86, 0.771, 0.749, 0.793, 0.948, 0.0598, 1.21, 93.8)",
+      "estimator_stated": true,
+      "note": "the value is printed for the private cohort; the release computes its own counterpart on the release cohort and never copies the printed number",
+      "evidence": {}
+    },
+    {
+      "claim_id": "table_5_sitewise::stratum_tibial",
+      "statement": "Table 5 row 'stratum_tibial' reports (3994, 208, 0.783, 0.764, 0.802, 0.958, 0.0641, 0.98, 94.4)",
+      "paper_location": "Table 5 row 10",
+      "code_symbols": [
+        "wireope.studies.tables.sitewise_table"
+      ],
+      "status": "NOT_RUN",
+      "probe": "",
+      "probe_value": null,
+      "expected": "(3994, 208, 0.783, 0.764, 0.802, 0.958, 0.0641, 0.98, 94.4)",
+      "estimator_stated": true,
+      "note": "the value is printed for the private cohort; the release computes its own counterpart on the release cohort and never copies the printed number",
+      "evidence": {}
+    },
+    {
+      "claim_id": "table_5_sitewise::stratum_femoropopliteal",
+      "statement": "Table 5 row 'stratum_femoropopliteal' reports (8006, 341, 0.797, 0.783, 0.811, 0.967, 0.0675, 0.77, 94.9)",
+      "paper_location": "Table 5 row 11",
+      "code_symbols": [
+        "wireope.studies.tables.sitewise_table"
+      ],
+      "status": "NOT_RUN",
+      "probe": "",
+      "probe_value": null,
+      "expected": "(8006, 341, 0.797, 0.783, 0.811, 0.967, 0.0675, 0.77, 94.9)",
+      "estimator_stated": true,
+      "note": "the value is printed for the private cohort; the release computes its own counterpart on the release cohort and never copies the printed number",
+      "evidence": {}
+    },
+    {
+      "claim_id": "table_5_sitewise::subgroup_female",
+      "statement": "Table 5 row 'subgroup_female' reports (2187, 103, 0.788, 0.771, 0.805, 0.961, 0.0657, 0.88, 94.6)",
+      "paper_location": "Table 5 row 12",
+      "code_symbols": [
+        "wireope.studies.tables.sitewise_table"
+      ],
+      "status": "NOT_RUN",
+      "probe": "",
+      "probe_value": null,
+      "expected": "(2187, 103, 0.788, 0.771, 0.805, 0.961, 0.0657, 0.88, 94.6)",
+      "estimator_stated": true,
+      "note": "the value is printed for the private cohort; the release computes its own counterpart on the release cohort and never copies the printed number",
+      "evidence": {}
+    },
+    {
+      "claim_id": "table_5_sitewise::subgroup_diabetes",
+      "statement": "Table 5 row 'subgroup_diabetes' reports (3014, 141, 0.789, 0.774, 0.804, 0.959, 0.0654, 0.9, 94.5)",
+      "paper_location": "Table 5 row 13",
+      "code_symbols": [
+        "wireope.studies.tables.sitewise_table"
+      ],
+      "status": "NOT_RUN",
+      "probe": "",
+      "probe_value": null,
+      "expected": "(3014, 141, 0.789, 0.774, 0.804, 0.959, 0.0654, 0.9, 94.5)",
+      "estimator_stated": true,
+      "note": "the value is printed for the private cohort; the release computes its own counterpart on the release cohort and never copies the printed number",
+      "evidence": {}
+    },
+    {
+      "claim_id": "table_5_sitewise::subgroup_ckd_or_dialysis",
+      "statement": "Table 5 row 'subgroup_ckd_or_dialysis' reports (1109, 58, 0.776, 0.752, 0.8, 0.951, 0.0621, 1.08, 94.2)",
+      "paper_location": "Table 5 row 14",
+      "code_symbols": [
+        "wireope.studies.tables.sitewise_table"
+      ],
+      "status": "NOT_RUN",
+      "probe": "",
+      "probe_value": null,
+      "expected": "(1109, 58, 0.776, 0.752, 0.8, 0.951, 0.0621, 1.08, 94.2)",
+      "estimator_stated": true,
+      "note": "the value is printed for the private cohort; the release computes its own counterpart on the release cohort and never copies the printed number",
+      "evidence": {}
+    },
+    {
+      "claim_id": "table_6_scaling::small_cohort_fraction",
+      "statement": "Table 6 row 'small_cohort_fraction' reports (3000, 141, 0.148, 473, 0.502)",
+      "paper_location": "Table 6 row 1",
+      "code_symbols": [
+        "wireope.studies.tables.scaling_table"
+      ],
+      "status": "NOT_RUN",
+      "probe": "",
+      "probe_value": null,
+      "expected": "(3000, 141, 0.148, 473, 0.502)",
+      "estimator_stated": true,
+      "note": "the value is printed for the private cohort; the release computes its own counterpart on the release cohort and never copies the printed number",
+      "evidence": {}
+    },
+    {
+      "claim_id": "table_6_scaling::intermediate_cohort_fraction",
+      "statement": "Table 6 row 'intermediate_cohort_fraction' reports (6000, 282, 0.119, 659, 0.548)",
+      "paper_location": "Table 6 row 2",
+      "code_symbols": [
+        "wireope.studies.tables.scaling_table"
+      ],
+      "status": "NOT_RUN",
+      "probe": "",
+      "probe_value": null,
+      "expected": "(6000, 282, 0.119, 659, 0.548)",
+      "estimator_stated": true,
+      "note": "the value is printed for the private cohort; the release computes its own counterpart on the release cohort and never copies the printed number",
+      "evidence": {}
+    },
+    {
+      "claim_id": "table_6_scaling::full_cohort",
+      "statement": "Table 6 row 'full_cohort' reports (12000, 564, 0.084, 911, 0.612)",
+      "paper_location": "Table 6 row 3",
+      "code_symbols": [
+        "wireope.studies.tables.scaling_table"
+      ],
+      "status": "NOT_RUN",
+      "probe": "",
+      "probe_value": null,
+      "expected": "(12000, 564, 0.084, 911, 0.612)",
+      "estimator_stated": true,
+      "note": "the value is printed for the private cohort; the release computes its own counterpart on the release cohort and never copies the printed number",
+      "evidence": {}
+    },
+    {
+      "claim_id": "table_6_scaling::single_site",
+      "statement": "Table 6 row 'single_site' reports (4842, 232, 0.136, 599, 0.531)",
+      "paper_location": "Table 6 row 4",
+      "code_symbols": [
+        "wireope.studies.tables.scaling_table"
+      ],
+      "status": "NOT_RUN",
+      "probe": "",
+      "probe_value": null,
+      "expected": "(4842, 232, 0.136, 599, 0.531)",
+      "estimator_stated": true,
+      "note": "the value is printed for the private cohort; the release computes its own counterpart on the release cohort and never copies the printed number",
+      "evidence": {}
+    },
+    {
+      "claim_id": "table_6_scaling::two_sites",
+      "statement": "Table 6 row 'two_sites' reports (8828, 422, 0.104, 771, 0.578)",
+      "paper_location": "Table 6 row 5",
+      "code_symbols": [
+        "wireope.studies.tables.scaling_table"
+      ],
+      "status": "NOT_RUN",
+      "probe": "",
+      "probe_value": null,
+      "expected": "(8828, 422, 0.104, 771, 0.578)",
+      "estimator_stated": true,
+      "note": "the value is printed for the private cohort; the release computes its own counterpart on the release cohort and never copies the printed number",
+      "evidence": {}
+    },
+    {
+      "claim_id": "table_6_scaling::three_sites",
+      "statement": "Table 6 row 'three_sites' reports (12000, 564, 0.084, 911, 0.612)",
+      "paper_location": "Table 6 row 6",
+      "code_symbols": [
+        "wireope.studies.tables.scaling_table"
+      ],
+      "status": "NOT_RUN",
+      "probe": "",
+      "probe_value": null,
+      "expected": "(12000, 564, 0.084, 911, 0.612)",
+      "estimator_stated": true,
+      "note": "the value is printed for the private cohort; the release computes its own counterpart on the release cohort and never copies the printed number",
+      "evidence": {}
+    },
+    {
+      "claim_id": "table_6_scaling::single_territory_femoropopliteal",
+      "statement": "Table 6 row 'single_territory_femoropopliteal' reports (8006, 341, 0.113, 778, 0.574)",
+      "paper_location": "Table 6 row 7",
+      "code_symbols": [
+        "wireope.studies.tables.scaling_table"
+      ],
+      "status": "NOT_RUN",
+      "probe": "",
+      "probe_value": null,
+      "expected": "(8006, 341, 0.113, 778, 0.574)",
+      "estimator_stated": true,
+      "note": "the value is printed for the private cohort; the release computes its own counterpart on the release cohort and never copies the printed number",
+      "evidence": {}
+    },
+    {
+      "claim_id": "table_6_scaling::single_territory_tibial",
+      "statement": "Table 6 row 'single_territory_tibial' reports (3994, 208, 0.161, 504, 0.496)",
+      "paper_location": "Table 6 row 8",
+      "code_symbols": [
+        "wireope.studies.tables.scaling_table"
+      ],
+      "status": "NOT_RUN",
+      "probe": "",
+      "probe_value": null,
+      "expected": "(3994, 208, 0.161, 504, 0.496)",
+      "estimator_stated": true,
+      "note": "the value is printed for the private cohort; the release computes its own counterpart on the release cohort and never copies the printed number",
+      "evidence": {}
+    },
+    {
+      "claim_id": "table_6_scaling::single_vendor_class",
+      "statement": "Table 6 row 'single_vendor_class' reports (7090, 325, 0.121, 703, 0.545)",
+      "paper_location": "Table 6 row 9",
+      "code_symbols": [
+        "wireope.studies.tables.scaling_table"
+      ],
+      "status": "NOT_RUN",
+      "probe": "",
+      "probe_value": null,
+      "expected": "(7090, 325, 0.121, 703, 0.545)",
+      "estimator_stated": true,
+      "note": "the value is printed for the private cohort; the release computes its own counterpart on the release cohort and never copies the printed number",
+      "evidence": {}
+    },
+    {
+      "claim_id": "table_6_scaling::multiple_vendor_classes",
+      "statement": "Table 6 row 'multiple_vendor_classes' reports (12000, 564, 0.084, 911, 0.612)",
+      "paper_location": "Table 6 row 10",
+      "code_symbols": [
+        "wireope.studies.tables.scaling_table"
+      ],
+      "status": "NOT_RUN",
+      "probe": "",
+      "probe_value": null,
+      "expected": "(12000, 564, 0.084, 911, 0.612)",
+      "estimator_stated": true,
+      "note": "the value is printed for the private cohort; the release computes its own counterpart on the release cohort and never copies the printed number",
+      "evidence": {}
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+# Table 2 panel A pair row: reconstruction and ladder both removed. The reported
+# interaction ratio is 1.20 against the sum of the separate violation-rate deltas.
+name: ablation_reconstruction_and_ladder_removed
+inherits: main
+switches:
+  envelope_excursion_reconstruction: false
+  nested_excursion_ladder: false
+  support_constraint: true
+  action_channel: removed
+  estimator: nested_dr
+report:
+  target: table_2_panel_a
+  variant: without_reconstruction_and_without_ladder
+  expected_delta_selection_pp: -7.9
+  expected_delta_violation_pp: 2.84
+  expected_interaction_ratio: 1.20

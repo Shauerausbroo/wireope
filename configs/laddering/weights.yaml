@@ -1,0 +1,9 @@
+# Fixed non-negative ladder weights carried by the graded crossing value functional
+# V(pi) = E[ sum_k w_k Y^(k)(pi) ] of Eq. (3). The manuscript fixes the weights but
+# does not print them, so the scheme below is an engineering default.
+ladder_weights:
+  scheme: geometric
+  value: 0.6
+  normalise: true
+  require_non_negative: true
+  # engineering default: manuscript states wk are fixed and non-negative, silent on values

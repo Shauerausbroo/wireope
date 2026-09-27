@@ -1,0 +1,46 @@
+# The cohort this release assembles for itself, so that every mechanism the private cohort
+# cannot support stays executable. Site counts and event counts are calibration targets,
+# reached by bisection on the per-site intercept; no value here is a paper table value.
+release_cohort:
+  name: envelope_excursion_release
+  version: 1
+  seed: 20260927
+  volume_shape: [32, 32, 32]
+  voxel_mm: 0.8
+  attempts: 12000
+  site_targets:
+    - {site: Site_A, region: Region_I, attempts: 4842, injury_events: 232}
+    - {site: Site_B, region: Region_II, attempts: 3986, injury_events: 190}
+    - {site: Site_C, region: Region_III, attempts: 3172, injury_events: 142}
+  prevalence_target: 0.047
+  calibration:
+    parameter: site_intercept
+    method: bisection
+    tolerance: 0.0005
+    max_iterations: 60
+    latent_noise_scale: 0.35
+    latent_noise_source: engineering_default_assignment_noise
+  closed_form:
+    injury_probability: logistic(intercept + beta_stage * stage + beta_calcification * grade
+                                 + beta_overlap * max_overlap_fraction + beta_action * aggressiveness)
+    coefficients: {intercept: -3.45, beta_stage: 0.42, beta_calcification: 0.51,
+                   beta_overlap: 0.63, beta_action: 0.44}
+    rung_level_model: binomial(K_minus_1, base_q + slope * aggressiveness)
+    rung_base_q: 0.45
+    rung_action_slope: 0.25
+    lesion_overlap_range: [0.05, 0.45]
+    nominal_lumen_radius_mm: 1.6
+  descriptor_mix:
+    stage: {I: 0.28, II: 0.44, III: 0.28}
+    calcification_grade: {0-1: 0.42, 2-3: 0.42, 4: 0.16}
+    vessel_territory: {femoropopliteal: 0.667, tibial: 0.333}
+  site_shift:
+    Site_A: {stage_shift: -0.10, calcification_shift: -0.06}
+    Site_B: {stage_shift: 0.02, calcification_shift: 0.01}
+    Site_C: {stage_shift: 0.12, calcification_shift: 0.09}
+  behaviour:
+    branch_temperature: 1.0
+    action_temperature: 1.15
+    library_size: 8
+    operator_count: 12
+    site_operator_overlap: 0.0

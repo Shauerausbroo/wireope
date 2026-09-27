@@ -1,0 +1,21 @@
+# Cohort records and reconstructed traces are never committed.
+/data/
+/artefacts/
+/runs/
+/models/
+/traces/
+*.pt
+*.npz
+
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.ipynb_checkpoints/
+.DS_Store
+__MACOSX/
+*.egg-info/
+build/
+dist/
+.coverage

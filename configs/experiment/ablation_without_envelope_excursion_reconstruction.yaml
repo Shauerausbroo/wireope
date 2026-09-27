@@ -1,0 +1,16 @@
+# Table 2 panel A row: the reconstructed action channel is removed and a state-only
+# estimate is fitted, which is the falsification arm for the action term.
+name: ablation_without_envelope_excursion_reconstruction
+inherits: main
+switches:
+  envelope_excursion_reconstruction: false
+  nested_excursion_ladder: true
+  support_constraint: true
+  action_channel: removed
+  estimator: nested_dr
+report:
+  target: table_2_panel_a
+  variant: without_envelope_excursion_reconstruction
+  expected_delta_selection_pp: -4.0
+  expected_delta_violation_pp: 1.34
+  expected_interaction_ratio: 1.00

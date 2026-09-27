@@ -1,0 +1,80 @@
+# Dataset and reference links. Each entry below answered with an HTTP 200 status and its
+# content matched the source named in the entry when probed from the verification host on
+# 2026-09-27. Links that did not answer are not listed. The private clinical cohort has no
+# link: it is held under site data-sharing agreements and is never distributed at record
+# level, so no URL describes it.
+
+https://github.com/project-lighter/CT-FM
+  name     : CT-FM, a 3D image-based foundation model for computed tomography
+  licence  : MIT
+  role     : frozen volumetric encoder that produces the lumen envelope (Sec. 3.2)
+  source   : cited by the manuscript, footnote 1 of Sec. 3.2
+  access   : open repository, no registration and no data-use agreement
+
+https://registry.opendata.aws/msd/
+  name     : Medical Segmentation Decathlon, Task 09 (hepatic vasculature)
+  licence  : Creative Commons Attribution-ShareAlike 4.0 International
+  role     : open auxiliary corpus for pretraining and external segmentation comparison
+  source   : cited by the manuscript, footnote 2 of Sec. 3.2
+  access   : anonymous access with --no-sign-request; staged for MONAI at s3://msd-for-monai
+
+https://medmnist.com/
+  name     : MedMNIST v2, 3D subset VesselMNIST3D
+  licence  : Creative Commons Attribution 4.0 International
+  role     : lightweight vessel-geometry probe on small volumes
+  source   : cited by the manuscript, footnote 3 of Sec. 3.2
+  access   : open; the benchmark states its source modality is magnetic resonance angiography
+             and that it is not intended for clinical use
+
+https://zenodo.org/records/10390295
+  name     : ARCADE (Automatic Region-based Coronary Artery Disease diagnostics)
+  licence  : Creative Commons Zero v1.0 Universal
+  role     : lesion-labelling auxiliary set
+  source   : cited by the manuscript, footnote 4 of Sec. 3.2 (DOI 10.5281/zenodo.10390295)
+  access   : open; the record describes x-ray angiography images rather than the CTA volumes the
+             framework conditions on, so it enters no clinical claim
+
+https://github.com/Project-MONAI/model-zoo
+  name     : MONAI Model Zoo, Swin UNETR segmentation bundle
+  licence  : Apache License 2.0
+  role     : universal supervised segmentation baseline
+  source   : cited by the manuscript, footnote 5 of Sec. 3.2
+  access   : open repository; the bundle downloads by a single command with no registration
+
+https://research.zozo.com/data.html
+  name     : Open Bandit Dataset (ZOZO RESEARCH)
+  licence  : Creative Commons Attribution 4.0 International, attribution to ZOZO RESEARCH
+  role     : public logged corpus with known propensities (Table 4 panel B)
+  source   : canonical distribution point of the benchmark the manuscript names
+  access   : open to public research organisations and researchers on request
+
+https://github.com/polixir/NeoRL
+  name     : NeoRL and NeoRL-2 benchmark
+  licence  : Apache License 2.0
+  role     : public logged corpus with real confounded sequential logs (Table 4 panel B)
+  source   : canonical repository of the benchmark the manuscript names
+  access   : open repository
+
+https://github.com/google-deepmind/offpolicy_selection_eslb
+  name     : COBS confident off-policy selection release
+  licence  : Apache License 2.0
+  role     : auxiliary reference row of Table 4 panel B
+  source   : canonical repository of the method family the row names
+  access   : open repository
+
+https://github.com/google-research/deep_ope
+  name     : Deep-OPE benchmark
+  licence  : Apache License 2.0
+  role     : auxiliary reference row of Table 4 panel B
+  source   : canonical repository of the benchmark the row names
+  access   : open repository
+
+https://github.com/Farama-Foundation/D4RL
+  name     : D4RL reference environments
+  licence  : Apache License 2.0
+  role     : idealised tier of Table 4 panel B, marked not clinical
+  source   : canonical repository of the benchmark the row names
+  access   : open repository
+
+# Not downloaded by this release: the five logged corpora above appear as transcription
+# targets only, because the row values depend on material the release does not fetch.

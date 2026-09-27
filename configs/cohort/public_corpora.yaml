@@ -1,0 +1,36 @@
+# Public logged corpora used only to check the estimator machinery outside the
+# clinical cohort. Rows are the manuscript's Table 4 panel B entries; the numbers the
+# manuscript prints for them are transcribed separately and are not recomputed from
+# these corpora, which are not downloaded by the release.
+corpora:
+  - key: open_bandit
+    label: Open Bandit Dataset
+    logging_regime: known_propensities
+    rows_millions: 26
+    licence: CC BY 4.0, attribution to ZOZO RESEARCH
+    source: https://research.zozo.com/data.html
+    role: known_propensity_check
+  - key: neorl2
+    label: NeoRL-2 conservative-logging tier
+    logging_regime: conservative_logging
+    licence: Apache-2.0
+    source: https://github.com/polixir/NeoRL
+    role: confounded_sequential_logs
+  - key: cobs
+    label: COBS benchmark
+    logging_regime: auxiliary_reference
+    licence: Apache-2.0
+    source: https://github.com/google-deepmind/offpolicy_selection_eslb
+    role: auxiliary_reference_only
+  - key: deep_ope
+    label: Deep-OPE benchmark
+    logging_regime: auxiliary_reference
+    licence: Apache-2.0
+    source: https://github.com/google-research/deep_ope
+    role: auxiliary_reference_only
+  - key: d4rl
+    label: D4RL idealised tier
+    logging_regime: idealised
+    licence: Apache-2.0
+    source: https://github.com/Farama-Foundation/D4RL
+    role: idealised_non_clinical

@@ -1,0 +1,16 @@
+# Rung-wise outcome model q^(k)(s, a) entering the direct part of Eq. (4).
+outcome:
+  form: logistic_regression
+  rung_features:
+    - envelope_max_excursion_mm
+    - dwell_integral_mm_s
+    - calcification_grade
+    - lesion_length_mm
+    - stage_onehot
+    - territory_onehot
+    - site_onehot
+  l2: 1.0e-3
+  max_iter: 500
+  clip_observations: true
+  # engineering default: the manuscript fits a rung-wise outcome model and prints no
+  # solver settings, so the regularisation strength and iteration cap are release choices

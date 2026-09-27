@@ -1,0 +1,16 @@
+# Table 3: every stratum is crossed with the clipping-threshold and pessimism settings
+# of the pre-specified grid, and each row carries the support diagnostics.
+name: supplementary_weight_control_sweep
+inherits: main
+grid:
+  strata:
+    - {axis: anatomical_stage, values: [I, II, III]}
+    - {axis: calcification_grade, values: [0-1, 2-3, 4]}
+    - {axis: vessel_territory, values: [femoropopliteal, tibial]}
+    - {axis: site, values: [Site_A, Site_B, Site_C]}
+  clipping: [least_aggressive, intermediate, most_aggressive]
+  pessimism: [least_pessimistic, most_pessimistic]
+report:
+  target: table_3_stratified_weight_control
+  columns: [relative_error, effective_sample_size, overlap_coefficient, selection_accuracy]
+  headline_from: conservative_end

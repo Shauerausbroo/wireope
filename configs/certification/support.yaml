@@ -1,0 +1,17 @@
+# Support-constrained selection. For every anatomical stratum g and every rung k the
+# behaviour policy must satisfy P_pib(A_k | g) >= c; strategies failing the floor are
+# ineligible rather than silently extrapolated, and the rule abstains when no eligible
+# strategy clears the safety constraint.
+support:
+  # Engineering default: the manuscript fixes a per-stratum, event-wise floor in the analysis
+  # plan but does not print its value. The default below is about one sixth of the uniform
+  # behaviour share over the eight-strategy library.
+  floor_c: 0.02
+  floor_source: engineering_default_analysis_plan_floor
+  axis: [stratum, rung]
+  event_wise: true
+  unconstrained_fallback: false
+  abstain_outcome:
+    reported: true
+    report_rate: true
+    report_coverage: true

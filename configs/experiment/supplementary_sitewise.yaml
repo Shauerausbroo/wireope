@@ -1,0 +1,12 @@
+# Table 5: the held-out site is reported separately from the pooled value and the
+# pre-specified clause-wise criteria are replicated site by site and stratum by stratum.
+name: supplementary_sitewise
+inherits: main
+settings: [site_a, site_b, site_c_held_out, cross_region_site_b_held_out, pooled,
+           stratum_stage_I, stratum_stage_II, stratum_stage_III, stratum_calcification_4,
+           stratum_tibial, stratum_femoropopliteal, subgroup_female, subgroup_diabetes,
+           subgroup_ckd_or_dialysis]
+report:
+  target: table_5_sitewise
+  columns: [crossing_attempts, positive_injury_events, auroc, calibration_one_minus_ece,
+            net_benefit_at_0.10, upper_bound_violation_rate, coverage]

@@ -1,0 +1,19 @@
+# Sec. 4.6: three-arm clinician comparison (clinician alone, model alone, team), with
+# nine interventional professionals, three per region, and a silent-mode workflow arm.
+name: supplementary_clinician_arms
+inherits: main
+arms: [clinician_alone, model_alone, clinician_with_model]
+readers:
+  total: 9
+  per_region: 3
+  certification: vascular_and_interventional_radiology
+  experience_years_range: [6, 21]
+  cross_region_document_verification: false
+readout:
+  task: strategy_selection
+  record: [strategy_choice, confidence_rating]
+  sequence: identical_to_model_arm
+  observe: [anatomical_details, excursion_record]
+report:
+  target: section_4_6_clinician_arms
+  columns: [selection_accuracy, net_benefit, abstention_rate]

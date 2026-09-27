@@ -1,0 +1,41 @@
+# for unit-test smoke only; do not use for reporting
+name: _smoke
+inherits: main
+overrides:
+  release_cohort:
+    attempts: 600
+    site_targets:
+      - {site: Site_A, region: Region_I, attempts: 300, injury_events: 14}
+      - {site: Site_B, region: Region_II, attempts: 200, injury_events: 10}
+      - {site: Site_C, region: Region_III, attempts: 100, injury_events: 4}
+    calibration: {parameter: site_intercept, method: bisection, tolerance: 0.02, max_iterations: 20}
+  schedule:
+    epochs: 2
+    batch_size: 64
+  hazard:
+    fit:
+      epochs: 2
+      batch_size: 64
+      lr: 3.0e-3
+      weight_decay: 1.0e-4
+      warmup_fraction: 0.0
+      schedule: cosine
+      grad_clip: 1.0
+      precision: fp32
+      seeds: [0]
+      device: cpu
+  ladder:
+    depth: 3
+    tau_mm: [5.0, 10.0, 15.0]
+    tau_inj_mm: 15.0
+  envelope:
+    encoder:
+      stage_channels: [8, 16]
+      stage_blocks: [1, 1]
+      bottleneck_channels: 16
+switches:
+  envelope_excursion_reconstruction: true
+  nested_excursion_ladder: true
+  support_constraint: true
+  action_channel: reconstructed
+  estimator: nested_dr

@@ -1,0 +1,31 @@
+# Three whole-site held-out settings. Each configuration is a separate split of the same
+# cohort: the primary external setting removes Site C and Region III entirely, the
+# cross-region setting removes Site B, and the cross-site consistency setting reports all
+# three sites separately. Partitions carry the configuration they belong to, so the leakage
+# audit compares partitions inside one configuration rather than across all of them.
+partitions:
+  - {name: fit_primary, sites: [Site_A, Site_B], role: development, configuration: primary_external}
+  - name: calibration_primary
+    sites: [Site_A, Site_B]
+    role: disjoint_weight_and_threshold_fitting
+    configuration: primary_external
+    disjoint_from: fit_primary
+  - name: external_site
+    sites: [Site_C]
+    regions: [Region_III]
+    role: primary_held_out_site_and_region
+    configuration: primary_external
+  - {name: fit_cross_region, sites: [Site_A, Site_C], role: development, configuration: cross_region}
+  - name: calibration_cross_region
+    sites: [Site_A, Site_C]
+    role: disjoint_weight_and_threshold_fitting
+    configuration: cross_region
+    disjoint_from: fit_cross_region
+  - {name: cross_region_site_b, sites: [Site_B], role: cross_region_holdout, configuration: cross_region}
+  - {name: sitewise_all, sites: [Site_A, Site_B, Site_C], role: per_site_consistency, configuration: sitewise}
+leakage_guards:
+  patient_disjoint: true
+  operator_disjoint_across_partitions: true
+  vendor_disjoint_across_partitions: true
+  calibration_share_disjoint: true
+  fail_on_overlap: true

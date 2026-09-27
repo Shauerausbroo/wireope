@@ -1,0 +1,36 @@
+# Primary evidence layer. Records are held under site data-sharing agreements and are
+# not shared at record level, so this file describes the cohort and never a path to it.
+cohort:
+  name: anonymized_multicentre_crossing_cohort
+  access: private_data_sharing_agreement
+  record_level_available: false
+  regions: [Region_I, Region_II, Region_III]
+  sites:
+    - {site: Site_A, region: Region_I, attempts: 4842, injury_events: 232}
+    - {site: Site_B, region: Region_II, attempts: 3986, injury_events: 190}
+    - {site: Site_C, region: Region_III, attempts: 3172, injury_events: 142}
+  accrual: consecutive
+  unit_of_analysis: crossing_attempt
+  nesting: [procedure_record, lesion, crossing_attempt]
+  outcome_adjudication:
+    endpoint: vessel_injury
+    components: [perforation, dissection]
+    reviewers_min: 2
+    blinded_to_reconstruction: true
+  secondary_endpoints: [technical_success, limb_level_outcome]
+  strata:
+    anatomical_stage: [I, II, III]
+    calcification_grade: [0-1, 2-3, 4]
+    vessel_territory: [femoropopliteal, tibial]
+    site: [Site_A, Site_B, Site_C]
+  subgroups:
+    - sex
+    - age_group
+    - diabetes
+    - chronic_kidney_disease_or_dialysis
+    - vessel_territory
+    - calcification_grade
+  identifiers: destroyed
+  relinking_keys: destroyed
+  time_shift_offsets: destroyed
+  literature_perforation_prevalence: 0.038

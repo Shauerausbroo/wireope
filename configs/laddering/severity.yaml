@@ -1,0 +1,15 @@
+# Nested-excursion ladder. Injury severity is monotone in wall penetration, so the
+# injury event is expressed as nested sets A_1 superset ... superset A_K with
+# A_k = {max_t h_t >= tau_k} and 0 < tau_1 < ... < tau_K = tau_inj. The top rung is the
+# observed injury event rather than an investigator-chosen cutoff.
+ladder:
+  depth: 4
+  additional_depths: [3, 5, 6]
+  tau_mm: [5.0, 10.0, 15.0, 20.0, 25.0, 30.0]
+  tau_inj_mm: 20.0
+  observed_injury_defines_top_rung: true
+  conditional_frequency_band: [0.15, 0.60]
+  resolution:
+    rule: adjacent_separation_exceeds_propagating_band
+    band_mm: 4.4411
+    band_source: quadrature of the tip tolerance and the segmentation tolerance

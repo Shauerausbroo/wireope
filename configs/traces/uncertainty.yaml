@@ -1,0 +1,15 @@
+# Uncertainty propagated from the two stages that bound the excursion observable: the
+# tip tracker's tolerance, which the manuscript states, and the envelope segmentation's
+# tolerance, which it does not. Their combination is the propagating band used by the
+# rung-resolution criterion.
+uncertainty:
+  tip_tolerance_mm: 4.44
+  tip_tolerance_source: transverse-fluoroscopy tip tracker, reported mean absolute error
+  segmentation_tolerance_mm: 0.10
+  segmentation_tolerance_source: engineering_default_segmentation_residual
+  combination: quadrature
+  confidence_multiplier: 1.0
+  surface_integral:
+    estimator: triangle_mesh_area
+    dwell_weighting: trapezoid
+    min_dwell_steps: 1

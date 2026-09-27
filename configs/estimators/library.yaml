@@ -1,0 +1,39 @@
+# Candidate estimator families compared on identical logs, splits, budgets and
+# preprocessing. The estimator is chosen from the overlap regime, not from an aggregate
+# benchmark, and the diagnostic that selected it is reported with the estimate.
+library:
+  candidates:
+    - key: is
+      label: Plain importance sampling
+      family: importance_sampling
+    - key: pdis
+      label: Per-decision importance sampling
+      family: importance_sampling
+    - key: pdis_w
+      label: Per-decision weighted importance sampling
+      family: importance_sampling
+    - key: wis
+      label: Weighted importance sampling
+      family: importance_sampling
+    - key: dr
+      label: Doubly robust
+      family: doubly_robust
+    - key: wdr
+      label: Weighted doubly robust
+      family: doubly_robust
+    - key: magic
+      label: Switching hybrid
+      family: switching_hybrid
+    - key: fqe
+      label: Fitted Q-evaluation
+      family: direct
+    - key: kernel_ih
+      label: Infinite-horizon kernel direct method
+      family: kernel_direct
+  selection:
+    criterion: overlap_coefficient_and_effective_sample_size
+    reported_diagnostics: [relative_error, effective_sample_size, overlap_coefficient, selection_accuracy]
+  comparator:
+    key: binary_hcb
+    label: High-confidence bound applied directly to the binary outcome
+    family: high_confidence_bound

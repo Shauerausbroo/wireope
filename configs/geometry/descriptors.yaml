@@ -1,0 +1,25 @@
+# Anatomical identifiers carried by the state alongside the envelope. Calcification
+# amount and distribution follow the Peripheral Arterial Calcium Scoring System.
+descriptors:
+  calcification:
+    system: peripheral_arterial_calcium_scoring
+    grades: [0, 1, 2, 3, 4]
+    arc_bins_deg: [0, 90, 180, 270, 360]
+    severity_weights: {0: 0.0, 1: 0.25, 2: 0.5, 3: 0.75, 4: 1.0}
+  cap_morphology:
+    classes: [calcified_nodule, ambiguous, tapered, blunt]
+    encoding: one_hot
+  lesion_length:
+    unit: mm
+    bins_mm: [0, 10, 20, 30, 60]
+  vessel_territory:
+    classes: [femoropopliteal, tibial, other]
+  anatomical_stage:
+    system: global_limb_anatomic_staging
+    stages: [I, II, III]
+  device_state:
+    fields: [device_class, attempt_index, device_to_lesion_relation]
+    recorded: true
+  action_channel:
+    recorded_by_system: false
+    fields_not_logged: [force, torque, progression, rotation]

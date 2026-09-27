@@ -1,0 +1,929 @@
+{
+  "root": "wireope",
+  "overall_status": "PARTIALLY_VERIFIED",
+  "code_status": "PARTIALLY_VERIFIED",
+  "gate_status": "VERIFIED",
+  "counts": {
+    "total": 66.0,
+    "passed": 62.0,
+    "failed": 0.0,
+    "not_run": 2.0,
+    "blocked": 2.0
+  },
+  "claim_counts": {
+    "claims": 100.0,
+    "passed": 16.0,
+    "failed": 0.0,
+    "not_run": 83.0,
+    "blocked": 1.0
+  },
+  "manuscript_counts": {
+    "total": 23.0,
+    "passed": 10.0,
+    "failed": 11.0,
+    "not_run": 2.0
+  },
+  "families": {
+    "execution": [
+      {
+        "name": "env.interpreter_and_libraries",
+        "status": "PASS",
+        "detail": "the interpreter and the declared numerical libraries import and report a version",
+        "evidence": {
+          "numpy": "2.4.3",
+          "torch": "2.11.0",
+          "python": "3.14"
+        }
+      },
+      {
+        "name": "env.deterministic_seeding",
+        "status": "PASS",
+        "detail": "the same seed reproduces the NumPy and torch draws",
+        "evidence": {
+          "numpy_first": 0.18026969,
+          "torch_first": 0.14904171
+        }
+      },
+      {
+        "name": "geometry.analytic_excursion_matches_discretised_field",
+        "status": "PASS",
+        "detail": "the discretised excursion stays within one and a half voxels of the analytic distance",
+        "evidence": {
+          "worst_abs_gap_mm": 0.3345,
+          "voxel_mm": 0.5,
+          "samples": 400
+        }
+      },
+      {
+        "name": "geometry.excursion_non_negative",
+        "status": "PASS",
+        "detail": "points on the centreline carry zero excursion under both the field and the analytic form",
+        "evidence": {
+          "min_field": 0.0,
+          "min_analytic": 0.0
+        }
+      },
+      {
+        "name": "geometry.surface_area_plausible",
+        "status": "PASS",
+        "detail": "the voxel-face surface area is within a factor of the cylinder estimate",
+        "evidence": {
+          "measured_mm2": 115.5,
+          "cylinder_estimate_mm2": 263.89
+        }
+      },
+      {
+        "name": "traces.event_integration_path_length",
+        "status": "PASS",
+        "detail": "ten advance events of magnitude two travel the closed-form distance",
+        "evidence": {
+          "measured_mm": 18.0,
+          "expected_mm": 18.0
+        }
+      },
+      {
+        "name": "traces.similarity_recovers_known_transform",
+        "status": "PASS",
+        "detail": "the closed-form similarity fit recovers a known rotation, scale and translation",
+        "evidence": {
+          "worst_residual_mm": 0.0,
+          "scale": 1.3
+        }
+      },
+      {
+        "name": "traces.registration_reduces_residual",
+        "status": "PASS",
+        "detail": "aligning a laterally offset trajectory drives the residual below half a millimetre",
+        "evidence": {
+          "residual_mm": 0.0,
+          "iterations": 2
+        }
+      },
+      {
+        "name": "traces.dwell_integral_closed_form",
+        "status": "PASS",
+        "detail": "the dwell integral equals the sum of the products by hand",
+        "evidence": {
+          "measured": 8.5,
+          "expected": 8.5
+        }
+      },
+      {
+        "name": "traces.propagating_band_quadrature",
+        "status": "PASS",
+        "detail": "the propagating band is the quadrature combination of the two tolerances",
+        "evidence": {
+          "combined_mm": 4.441126,
+          "expected_mm": 4.441126
+        }
+      },
+      {
+        "name": "traces.trace_assembles_finite_observables",
+        "status": "PASS",
+        "detail": "the assembled trace carries one excursion value per sample and a finite surface integral",
+        "evidence": {
+          "samples": 24,
+          "surface_integral_mm2": 25.68
+        }
+      },
+      {
+        "name": "ladder.thresholds_increasing_and_top_rung_is_injury",
+        "status": "PASS",
+        "detail": "the rung thresholds increase and the top rung is the injury threshold",
+        "evidence": {
+          "thresholds": "[5.0, 10.0, 15.0]"
+        }
+      },
+      {
+        "name": "ladder.nesting_matches_brute_force",
+        "status": "PASS",
+        "detail": "the ladder indicators reproduce a brute-force threshold loop, nest downward, and the top rung equals the adjudicated endpoint",
+        "evidence": {
+          "rows": 600,
+          "rungs": 3
+        }
+      },
+      {
+        "name": "ladder.weights_non_negative_and_normalised",
+        "status": "PASS",
+        "detail": "the rung weights are non-negative and sum to one",
+        "evidence": {
+          "total": 1.0,
+          "first": 0.510204
+        }
+      },
+      {
+        "name": "ladder.rung_resolution_on_configured_ladder",
+        "status": "PASS",
+        "detail": "every adjacent rung separation on the configured ladder exceeds the propagating band",
+        "evidence": {
+          "band_mm": 4.4411,
+          "separations_mm": "[5.0, 5.0]",
+          "max_depth": 3
+        }
+      },
+      {
+        "name": "ladder.conditional_frequencies_inside_declared_band",
+        "status": "PASS",
+        "detail": "the assembled cohort's intermediate rung transitions are compared against the declared tolerable band, with the endpoint transition reported separately",
+        "evidence": {
+          "frequencies": "[0.7933, 0.479, 0.1228]",
+          "interior": "[0.479]",
+          "endpoint_conditional": 0.1228,
+          "band": [
+            0.15,
+            0.6
+          ]
+        }
+      },
+      {
+        "name": "ladder.max_resolvable_depth_within_the_threshold_grid",
+        "status": "PASS",
+        "detail": "the deepest resolvable ladder fits inside the configured threshold grid",
+        "evidence": {
+          "max_depth": 3,
+          "configured_depth": 3,
+          "band_mm": 4.4411
+        }
+      },
+      {
+        "name": "estimators.importance_weights_closed_form",
+        "status": "PASS",
+        "detail": "the importance weight is the indicator over the reconstructed propensity",
+        "evidence": {
+          "assigned": 106,
+          "attempts": 400
+        }
+      },
+      {
+        "name": "estimators.effective_sample_size_limits",
+        "status": "PASS",
+        "detail": "the effective sample size is the sample count for uniform weights and one for a single carrying weight",
+        "evidence": {
+          "uniform": 4.0,
+          "concentrated": 1.0
+        }
+      },
+      {
+        "name": "estimators.nested_dr_recovers_known_functionals",
+        "status": "PASS",
+        "detail": "with a deliberately wrong direct part and the true propensity, the importance-weighted residual alone recovers the closed-form rung marginals on a large independent draw",
+        "evidence": {
+          "graded_gap": 0.002,
+          "risk_gap": 0.0009,
+          "truth_graded": 0.4047
+        }
+      },
+      {
+        "name": "estimators.nested_dr_is_sensitive_to_a_misspecified_propensity",
+        "status": "PASS",
+        "detail": "the correct propensity recovers the closed-form risk while a misspecified one moves the estimate, so the reconstructed behaviour model is load-bearing",
+        "evidence": {
+          "correct_risk": 0.2046,
+          "misspecified_risk": 0.1265,
+          "truth_risk": 0.2
+        }
+      },
+      {
+        "name": "estimators.every_candidate_is_finite",
+        "status": "PASS",
+        "detail": "every candidate in the library returns a finite estimate on one shared batch",
+        "evidence": {
+          "binary_hcb": 0.048696,
+          "dr": 0.337569,
+          "fqe": 0.275,
+          "is": 0.015556,
+          "kernel_ih": 0.334585,
+          "magic": 0.319692,
+          "nested_dr": 0.337569,
+          "pdis": 0.326111,
+          "pdis_w": 0.34029,
+          "wdr": 0.34029,
+          "wis": 0.016232
+        }
+      },
+      {
+        "name": "estimators.repeated_estimation_is_reproducible",
+        "status": "PASS",
+        "detail": "estimating twice on the same batch returns the identical value",
+        "evidence": {
+          "value": 0.34
+        }
+      },
+      {
+        "name": "estimators.kernel_weights_normalised_per_target_state",
+        "status": "PASS",
+        "detail": "each target state's kernel weights sum to one",
+        "evidence": {
+          "worst_row_error": 0.0
+        }
+      },
+      {
+        "name": "estimators.product_risk_reconstructs_the_endpoint",
+        "status": "PASS",
+        "detail": "the per-rung conditionals are the marginal ratios and their product is the endpoint marginal",
+        "evidence": {
+          "conditionals": "[0.6, 0.5, 0.33333, 0.2]"
+        }
+      },
+      {
+        "name": "bounds.hoeffding_radius_matches_closed_form",
+        "status": "PASS",
+        "detail": "the Eq. (7) radius equals the hand-computed expression with the rarest-rung effective count",
+        "evidence": {
+          "radius": 0.563204,
+          "manual": 0.563204,
+          "total": 0.573204
+        }
+      },
+      {
+        "name": "bounds.radius_falls_as_rarest_rung_events_grow",
+        "status": "PASS",
+        "detail": "raising only the rarest-rung count tightens the radius monotonically",
+        "evidence": {
+          "radii": "[0.459854, 0.325166, 0.290837, 0.290837]",
+          "effective_min": 12.0
+        }
+      },
+      {
+        "name": "bounds.radius_invariant_to_shallower_rung_records",
+        "status": "PASS",
+        "detail": "adding records that do not raise the rarest-rung count leaves the radius unchanged, which is the sizing law the manuscript states",
+        "evidence": {
+          "radius_at_low_records": 0.282474,
+          "radius_at_high_records": 0.282474
+        }
+      },
+      {
+        "name": "bounds.bernstein_leading_term_equals_hoeffding_at_maximum_variance",
+        "status": "PASS",
+        "detail": "at sigma = B/2 the two leading terms coincide, leaving only the residual correction",
+        "evidence": {
+          "leading_ratio": 1.0,
+          "residual_correction": 1.691725
+        }
+      },
+      {
+        "name": "bounds.bernstein_no_wider_than_hoeffding_where_the_correction_is_small",
+        "status": "PASS",
+        "detail": "with conformed residuals and a large effective count the empirical-Bernstein radius does not exceed the Hoeffding radius; the small-sample regime is reported beside it",
+        "evidence": {
+          "bernstein": 0.014868,
+          "hoeffding": 0.015541,
+          "leading_ratio": 0.863441,
+          "small_sample_bernstein": 0.678161,
+          "small_sample_hoeffding": 0.270248
+        }
+      },
+      {
+        "name": "certification.floor_matches_brute_force_mass",
+        "status": "PASS",
+        "detail": "the number of stratum-rung cells below the floor agrees with an independent mass loop",
+        "evidence": {
+          "reported_failures": 0,
+          "brute_force_failures": 0
+        }
+      },
+      {
+        "name": "certification.rule_matches_brute_force_argmax",
+        "status": "PASS",
+        "detail": "the constrained rule picks the highest utility lower limit among the strategies within the margin, and the unconstrained arm ignores both the floor and the margin",
+        "evidence": {
+          "constrained_pick": "a",
+          "expected": "a",
+          "unconstrained_pick": "c"
+        }
+      },
+      {
+        "name": "certification.abstains_when_no_strategy_is_eligible",
+        "status": "PASS",
+        "detail": "an empty eligible set returns abstention with the reason recorded",
+        "evidence": {
+          "reason": "no strategy cleared the per-stratum overlap floor"
+        }
+      },
+      {
+        "name": "metrics.auroc_matches_an_independent_library",
+        "status": "PASS",
+        "detail": "the rank-based AUROC agrees with scikit-learn on the same scores",
+        "evidence": {
+          "ours": 0.70995898,
+          "reference": 0.70995898
+        }
+      },
+      {
+        "name": "metrics.auroc_matches_pairwise_concordance",
+        "status": "PASS",
+        "detail": "the AUROC equals the pairwise concordance count on a hand-enumerated example",
+        "evidence": {
+          "ours": 0.83333333,
+          "manual": 0.83333333
+        }
+      },
+      {
+        "name": "metrics.delong_interval_brackets_the_estimate",
+        "status": "PASS",
+        "detail": "the DeLong interval contains its own point estimate and has positive width",
+        "evidence": {
+          "auroc": 0.6989,
+          "lower": 0.65126,
+          "upper": 0.74654
+        }
+      },
+      {
+        "name": "metrics.net_benefit_matches_closed_form",
+        "status": "PASS",
+        "detail": "net benefit equals the hand-computed decision-curve expression, and the treat-all reference matches its own closed form",
+        "evidence": {
+          "measured": 0.5,
+          "expected": 0.5
+        }
+      },
+      {
+        "name": "metrics.calibration_error_matches_bin_average",
+        "status": "PASS",
+        "detail": "the expected calibration error equals the bin-weighted gap computed by hand",
+        "evidence": {
+          "measured": 0.1,
+          "manual": 0.1
+        }
+      },
+      {
+        "name": "metrics.violation_rate_excludes_abstentions",
+        "status": "PASS",
+        "detail": "the violation rate is taken over the answered decisions only, which the hand count confirms",
+        "evidence": {
+          "measured": 0.25,
+          "manual": 0.25
+        }
+      },
+      {
+        "name": "fit.hazard_forward_shapes",
+        "status": "PASS",
+        "detail": "the hazard head returns one logit per step and per rung at the input batch size",
+        "evidence": {
+          "logits_shape": "(4, 48, 3)"
+        }
+      },
+      {
+        "name": "fit.loss_is_finite_and_backward_reaches_every_parameter",
+        "status": "PASS",
+        "detail": "the rung loss is finite and positive and the backward pass populated every gradient",
+        "evidence": {
+          "loss": 0.552626,
+          "parameters_with_gradient": 35,
+          "parameters_total": 35
+        }
+      },
+      {
+        "name": "fit.optimiser_step_changes_parameters",
+        "status": "PASS",
+        "detail": "one optimiser step changes at least one parameter tensor",
+        "evidence": {
+          "tensors_changed": 35,
+          "loss": 0.901417
+        }
+      },
+      {
+        "name": "fit.checkpoint_round_trip_restores_parameters_and_seed",
+        "status": "PASS",
+        "detail": "the checkpoint restores every parameter tensor and carries the run seed",
+        "evidence": {
+          "seed": 99,
+          "digest_length": 64
+        }
+      },
+      {
+        "name": "fit.encoder_trunk_is_frozen_while_the_adapter_learns",
+        "status": "PASS",
+        "detail": "the backward pass leaves the trunk untouched and reaches only the adapter",
+        "evidence": {
+          "trunk_gradients": 0
+        }
+      },
+      {
+        "name": "fit.single_batch_overfit_reduces_the_loss",
+        "status": "PASS",
+        "detail": "overfitting one batch for forty steps reduces the rung loss",
+        "evidence": {
+          "first_loss": 0.706797,
+          "final_loss": 0.071424
+        }
+      },
+      {
+        "name": "fit.minimal_training_loop_reads_writes_and_decreases_the_loss",
+        "status": "PASS",
+        "detail": "a two-epoch loop on the smoke configuration reads the dataset, updates parameters, writes and reloads a checkpoint, and lowers the loss",
+        "evidence": {
+          "steps": 20,
+          "first_loss": 0.755037,
+          "final_loss": 0.488218,
+          "epochs": 2
+        }
+      },
+      {
+        "name": "fit.reconstructed_sequence_is_monotone_and_reaches_the_peak",
+        "status": "PASS",
+        "detail": "the excursion sequence rises monotonically to the recorded peak",
+        "evidence": {
+          "peak": 12.5,
+          "sequence_peak": 12.5
+        }
+      },
+      {
+        "name": "fit.forward_pass_is_seed_deterministic",
+        "status": "PASS",
+        "detail": "two models built under the same seed produce identical logits",
+        "evidence": {
+          "max_absolute_gap": 0.0
+        }
+      },
+      {
+        "name": "cohort.assembly_hits_the_site_accrual_targets",
+        "status": "PASS",
+        "detail": "the assembled cohort carries the accrual of every site exactly",
+        "evidence": {
+          "counts": "{'Site_A': 300, 'Site_B': 200, 'Site_C': 100}"
+        }
+      },
+      {
+        "name": "cohort.assembly_hits_the_event_targets",
+        "status": "PASS",
+        "detail": "the assembled cohort carries the adjudicated event count of every site exactly",
+        "evidence": {
+          "counts": "{'Site_A': 14, 'Site_B': 10, 'Site_C': 4}"
+        }
+      },
+      {
+        "name": "cohort.calibration_intercepts_are_finite_and_site_specific",
+        "status": "PASS",
+        "detail": "every site intercept is finite and the implied event rate is site-specific",
+        "evidence": {
+          "intercepts": "{'Site_A': -4.7886, 'Site_B': -4.8315, 'Site_C': -5.186}"
+        }
+      },
+      {
+        "name": "cohort.discrimination_is_not_at_its_ceiling",
+        "status": "PASS",
+        "detail": "the closed-form risk separates the endpoint without saturating, so an AUROC control is not vacuous",
+        "evidence": {
+          "auroc": 0.55214
+        }
+      },
+      {
+        "name": "cohort.partitions_clear_every_leakage_guard",
+        "status": "PASS",
+        "detail": "patient, operator, vendor and calibration guards all hold inside every configuration",
+        "evidence": {
+          "leakage": "{'patient_disjoint': True, 'operator_disjoint': True, 'vendor_disjoint': True, 'calibration_disjoint': True, 'overlapping_partitions': [], 'clean': True}"
+        }
+      },
+      {
+        "name": "cohort.assembly_is_reproducible_under_its_seed",
+        "status": "PASS",
+        "detail": "assembling the cohort again under the configured seed reproduces the endpoint and the peaks",
+        "evidence": {
+          "attempts": 600
+        }
+      },
+      {
+        "name": "data.private_cohort_record_level_availability",
+        "status": "BLOCKED",
+        "detail": "the primary clinical cohort is held under site data-sharing agreements and is not shared at record level, so no cohort table value can be produced",
+        "evidence": {
+          "access": "private_data_sharing_agreement",
+          "record_level": false
+        }
+      },
+      {
+        "name": "data.public_corpus_rows_are_transcription_targets",
+        "status": "NOT_RUN",
+        "detail": "the public logged corpora are named but not downloaded, so their rows carry no value",
+        "evidence": {
+          "corpora": "['open_bandit', 'neorl2', 'cobs', 'deep_ope', 'd4rl']"
+        }
+      },
+      {
+        "name": "data.dataset_links_reachable",
+        "status": "NOT_RUN",
+        "detail": "the link probe is live and opt-in; the authoring-time verification is recorded in dataset_urls.txt",
+        "evidence": {
+          "recorded_links": "10"
+        }
+      },
+      {
+        "name": "container.docker_build",
+        "status": "BLOCKED",
+        "detail": "no container runtime is installed on the verification host, so the image cannot be built",
+        "evidence": {
+          "returncode": 1
+        }
+      },
+      {
+        "name": "hygiene.no_host_absolute_paths",
+        "status": "PASS",
+        "detail": "no file in the release carries a host-specific absolute path",
+        "evidence": {
+          "offenders": "[]"
+        }
+      },
+      {
+        "name": "hygiene.only_the_readme_carries_markdown",
+        "status": "PASS",
+        "detail": "README.md is the only markdown file in the release",
+        "evidence": {
+          "offenders": "[]"
+        }
+      },
+      {
+        "name": "hygiene.no_emoji_anywhere_in_the_tree",
+        "status": "PASS",
+        "detail": "no emoji appears in any text file of the release",
+        "evidence": {
+          "offenders": "[]"
+        }
+      }
+    ],
+    "gates": [
+      {
+        "name": "gate.ruff",
+        "status": "PASS",
+        "detail": "exit code 0 from ruff check .",
+        "evidence": {
+          "exit_code": 0
+        }
+      },
+      {
+        "name": "gate.black",
+        "status": "PASS",
+        "detail": "exit code 0 from black --check .",
+        "evidence": {
+          "exit_code": 0
+        }
+      },
+      {
+        "name": "gate.isort",
+        "status": "PASS",
+        "detail": "exit code 0 from isort --check-only .",
+        "evidence": {
+          "exit_code": 0
+        }
+      },
+      {
+        "name": "gate.mypy",
+        "status": "PASS",
+        "detail": "exit code 0 from mypy --config-file pyproject.toml",
+        "evidence": {
+          "exit_code": 0
+        }
+      },
+      {
+        "name": "gate.pytest",
+        "status": "PASS",
+        "detail": "exit code 0 from /opt/homebrew/opt/python@3.14/bin/python3.14 -m pytest -q",
+        "evidence": {
+          "exit_code": 0
+        }
+      }
+    ],
+    "manuscript": [
+      {
+        "name": "manuscript.site_partition_sums",
+        "status": "PASS",
+        "detail": "three sites sum to 12000 attempts and 564 events against a pooled 12000 and 564",
+        "anchor": "Table 5 rows 1-5",
+        "evidence": {
+          "attempts_sum": 12000,
+          "events_sum": 564,
+          "pooled_attempts": 12000,
+          "pooled_events": 564
+        }
+      },
+      {
+        "name": "manuscript.territory_partition_events",
+        "status": "FAIL",
+        "detail": "the two territory rows carry 549 events while the pooled row reports 564, a gap of 15",
+        "anchor": "Table 5 rows 5, 10, 11",
+        "evidence": {
+          "territory_events": 549,
+          "pooled_events": 564,
+          "gap": 15
+        }
+      },
+      {
+        "name": "manuscript.ablation_interaction_violation",
+        "status": "PASS",
+        "detail": "the violation-rate deltas recompute to [1.203, 1.197, 1.217] against the printed [1.2, 1.2, 1.22]",
+        "anchor": "Table 2 panel A rows 5-7",
+        "evidence": {
+          "recomputed": "[1.2034, 1.1968, 1.2171]",
+          "printed": "[1.2, 1.2, 1.22]"
+        }
+      },
+      {
+        "name": "manuscript.ablation_interaction_selection",
+        "status": "FAIL",
+        "detail": "the caption states the interaction ratio is computed on the violation rate and on selection accuracy; on selection accuracy the three pairs give [1.11, 1.31, 1.23] against the printed [1.2, 1.2, 1.22]",
+        "anchor": "Table 2 panel A caption and column 4",
+        "evidence": {
+          "selection_ratios": "[1.113, 1.314, 1.227]",
+          "printed": "[1.2, 1.2, 1.22]"
+        }
+      },
+      {
+        "name": "manuscript.state_only_violation_row",
+        "status": "FAIL",
+        "detail": "Table 1 prints 2.04 for the state-only violation rate while the full framework plus the Table 2 removal delta gives 2.18",
+        "anchor": "Table 1 row 3 and Table 2 panel A row 2",
+        "evidence": {
+          "table_1_state_only": 2.04,
+          "implied": 2.18,
+          "full_framework": 0.84,
+          "delta": 1.34
+        }
+      },
+      {
+        "name": "manuscript.constraint_direction",
+        "status": "FAIL",
+        "detail": "Eq. (2) constrains a lower confidence limit of the risk estimator at or below a margin while Eq. (5) constrains an upper limit at or below a threshold on the same functional; the two printed forms disagree in direction",
+        "anchor": "Eq. (2) and Eq. (5)",
+        "evidence": {
+          "eq2": "L(pi; delta) <= m",
+          "eq5": "UCB_alpha(R_hat(pi)) <= kappa"
+        }
+      },
+      {
+        "name": "manuscript.utility_direction",
+        "status": "FAIL",
+        "detail": "Eq. (2) maximises decision-analytic net benefit while Eq. (3) defines the functional that Eq. (5) maximises as a graded excursion value whose sign runs the other way, so the two printed objectives cannot both be the utility",
+        "anchor": "Eq. (2), Eq. (3) and Eq. (5)",
+        "evidence": {
+          "eq2": "argmax NB(pi; pt)",
+          "eq3": "V(pi) = E[sum_k w_k Y^(k)(pi)]"
+        }
+      },
+      {
+        "name": "manuscript.ladder_nesting_direction",
+        "status": "FAIL",
+        "detail": "Sec. 3.1 states the ladder implication as Y^(k) = 1 implying Y^(k+1) = 1, which makes the indicator non-decreasing in depth, while Sec. 3.4 nests the rungs as A_1 superset ... superset A_K with increasing thresholds, which makes it non-increasing",
+        "anchor": "Sec. 3.1 formal statement and Sec. 3.4 opening",
+        "evidence": {
+          "sec_3_1": "Y^(k) = 1 => Y^(k+1) = 1",
+          "sec_3_4": "A_1 superset A_2 ... superset A_K"
+        }
+      },
+      {
+        "name": "manuscript.abstention_coverage_complement",
+        "status": "FAIL",
+        "detail": "Table 1 reports 6.2% abstention while Table 5's coverage implies 5.3% on the held-out site and 5.3% pooled",
+        "anchor": "Table 1 row 7, column 8 and Table 5 column 7",
+        "evidence": {
+          "table_1_abstention": 6.2,
+          "implied_held_out": 5.299999999999997,
+          "implied_pooled": 5.299999999999997
+        }
+      },
+      {
+        "name": "manuscript.abstract_matches_table_one",
+        "status": "PASS",
+        "detail": "every abstract headline value is carried by the corresponding Table 1 row",
+        "anchor": "Abstract and Table 1 rows 4 and 7",
+        "evidence": {
+          "constrained_auroc": 0.792,
+          "unconstrained_auroc": 0.793
+        }
+      },
+      {
+        "name": "manuscript.selection_accuracy_parity_clause",
+        "status": "PASS",
+        "detail": "the parity clause allows one percentage point and the printed gap is 0.4 points",
+        "anchor": "Table 1 caption and column 6",
+        "evidence": {
+          "gap_pp": 0.40000000000000036
+        }
+      },
+      {
+        "name": "manuscript.event_budget_knee",
+        "status": "PASS",
+        "detail": "the relative error falls by 0.258 over the first four steps and by no more than 0.006 past the sixth, placing the knee in the low tens",
+        "anchor": "Table 4 panel A column 2",
+        "evidence": {
+          "early_drop": 0.258,
+          "late_drop": 0.006000000000000005,
+          "accuracy_at_60": 0.554
+        }
+      },
+      {
+        "name": "manuscript.published_within_ten_percent",
+        "status": "PASS",
+        "detail": "the comparability column of the bake-off reproduces the published aggregate near-top-frequency values quoted in the Introduction",
+        "anchor": "Table 2 panel B column 6, Sec. 1 and Sec. 2.1",
+        "evidence": {
+          "is": 6.3,
+          "kernel_ih": 41.7
+        }
+      },
+      {
+        "name": "manuscript.rung_resolution_at_stated_tolerance",
+        "status": "NOT_RUN",
+        "detail": "the resolution criterion needs the propagating band and the rung spacing; the manuscript states the 4.44 mm tip tolerance but neither the segmentation tolerance nor the spacing, so the criterion cannot be evaluated on its own numbers",
+        "anchor": "Sec. 3.3 last paragraph and Sec. 3.4 opening",
+        "evidence": {
+          "tip_tolerance_mm": 4.44,
+          "segmentation_tolerance": "unreported",
+          "rung_spacing": "unreported"
+        }
+      },
+      {
+        "name": "manuscript.unfilled_placeholder",
+        "status": "FAIL",
+        "detail": "the Introduction carries the unfilled placeholder '[insert number]%' in the first sentence of the background",
+        "anchor": "Sec. 1 first paragraph",
+        "evidence": {
+          "text": "[insert number]% 40 of patients"
+        }
+      },
+      {
+        "name": "manuscript.prevalence_axis",
+        "status": "FAIL",
+        "detail": "the precision-recall axis is reported against a 3.8% prevalence while the cohort's own rate is 4.70%",
+        "anchor": "Sec. 3.7 mid paragraph and Table 5 row 5",
+        "evidence": {
+          "cohort_prevalence_pct": 4.7,
+          "axis_prevalence_pct": 3.8
+        }
+      },
+      {
+        "name": "manuscript.intro_perforation_fraction",
+        "status": "PASS",
+        "detail": "367 of 9,618 is 3.82%, consistent with the 3.8% quoted beside it",
+        "anchor": "Sec. 1 first paragraph",
+        "evidence": {
+          "fraction_pct": 3.815762112705344
+        }
+      },
+      {
+        "name": "manuscript.table_numbering",
+        "status": "FAIL",
+        "detail": "Sec. 4.6 refers to the per-site table as 'Table 9.01' while the table carrying those numbers is Table 5",
+        "anchor": "Sec. 4.6 first sentence and Table 5",
+        "evidence": {
+          "reference": "Table 9.01",
+          "actual": "Table 5"
+        }
+      },
+      {
+        "name": "manuscript.weight_control_monotonicity",
+        "status": "PASS",
+        "detail": "more aggressive clipping lowers the relative error and raises the effective sample size monotonically, and the pessimistic end is worse than the optimistic end",
+        "anchor": "Table 3 rows 12-16",
+        "evidence": {
+          "clipping_errors": "[0.243, 0.131, 0.089]",
+          "clipping_sizes": "[358, 694, 877]",
+          "pessimistic_error": 0.206,
+          "optimistic_error": 0.097
+        }
+      },
+      {
+        "name": "manuscript.table_six_sums",
+        "status": "PASS",
+        "detail": "the site-count rows of the scaling table are the cumulative site partitions",
+        "anchor": "Table 6 rows 4-6 and Table 5 rows 1-3",
+        "evidence": {
+          "single": 4842,
+          "two": 8828,
+          "three": 12000
+        }
+      },
+      {
+        "name": "manuscript.table_six_prevalence",
+        "status": "PASS",
+        "detail": "the cohort-fraction rows hold the prevalence at 4.70% while both the records and the event count scale",
+        "anchor": "Table 6 rows 1-3",
+        "evidence": {
+          "prevalences_pct": "[4.7, 4.7, 4.7]"
+        }
+      },
+      {
+        "name": "manuscript.full_cohort_effective_sample_size",
+        "status": "FAIL",
+        "detail": "the full framework carries effective size 412 in Table 2 and 911 in Table 6 while both rows print the same overlap coefficient 0.612, so the two entries cannot be the same quantity under one definition",
+        "anchor": "Table 2 panel A row 1 and Table 6 row 3",
+        "evidence": {
+          "table_2_size": 412,
+          "table_6_size": 911,
+          "overlap": 0.612
+        }
+      },
+      {
+        "name": "manuscript.equation_seven_parameters",
+        "status": "NOT_RUN",
+        "detail": "the lower-confidence-bound width column of the event-budget table cannot be recomputed because the bounded range B, the depth K and the level delta are not printed for that table",
+        "anchor": "Eq. (7) and Table 4 panel A column 5",
+        "evidence": {
+          "bounded_range": "unreported",
+          "depth": "unreported",
+          "delta": "unreported"
+        }
+      }
+    ]
+  },
+  "manuscript_discrepancies": [
+    {
+      "name": "manuscript.territory_partition_events",
+      "detail": "the two territory rows carry 549 events while the pooled row reports 564, a gap of 15",
+      "anchor": "Table 5 rows 5, 10, 11"
+    },
+    {
+      "name": "manuscript.ablation_interaction_selection",
+      "detail": "the caption states the interaction ratio is computed on the violation rate and on selection accuracy; on selection accuracy the three pairs give [1.11, 1.31, 1.23] against the printed [1.2, 1.2, 1.22]",
+      "anchor": "Table 2 panel A caption and column 4"
+    },
+    {
+      "name": "manuscript.state_only_violation_row",
+      "detail": "Table 1 prints 2.04 for the state-only violation rate while the full framework plus the Table 2 removal delta gives 2.18",
+      "anchor": "Table 1 row 3 and Table 2 panel A row 2"
+    },
+    {
+      "name": "manuscript.constraint_direction",
+      "detail": "Eq. (2) constrains a lower confidence limit of the risk estimator at or below a margin while Eq. (5) constrains an upper limit at or below a threshold on the same functional; the two printed forms disagree in direction",
+      "anchor": "Eq. (2) and Eq. (5)"
+    },
+    {
+      "name": "manuscript.utility_direction",
+      "detail": "Eq. (2) maximises decision-analytic net benefit while Eq. (3) defines the functional that Eq. (5) maximises as a graded excursion value whose sign runs the other way, so the two printed objectives cannot both be the utility",
+      "anchor": "Eq. (2), Eq. (3) and Eq. (5)"
+    },
+    {
+      "name": "manuscript.ladder_nesting_direction",
+      "detail": "Sec. 3.1 states the ladder implication as Y^(k) = 1 implying Y^(k+1) = 1, which makes the indicator non-decreasing in depth, while Sec. 3.4 nests the rungs as A_1 superset ... superset A_K with increasing thresholds, which makes it non-increasing",
+      "anchor": "Sec. 3.1 formal statement and Sec. 3.4 opening"
+    },
+    {
+      "name": "manuscript.abstention_coverage_complement",
+      "detail": "Table 1 reports 6.2% abstention while Table 5's coverage implies 5.3% on the held-out site and 5.3% pooled",
+      "anchor": "Table 1 row 7, column 8 and Table 5 column 7"
+    },
+    {
+      "name": "manuscript.unfilled_placeholder",
+      "detail": "the Introduction carries the unfilled placeholder '[insert number]%' in the first sentence of the background",
+      "anchor": "Sec. 1 first paragraph"
+    },
+    {
+      "name": "manuscript.prevalence_axis",
+      "detail": "the precision-recall axis is reported against a 3.8% prevalence while the cohort's own rate is 4.70%",
+      "anchor": "Sec. 3.7 mid paragraph and Table 5 row 5"
+    },
+    {
+      "name": "manuscript.table_numbering",
+      "detail": "Sec. 4.6 refers to the per-site table as 'Table 9.01' while the table carrying those numbers is Table 5",
+      "anchor": "Sec. 4.6 first sentence and Table 5"
+    },
+    {
+      "name": "manuscript.full_cohort_effective_sample_size",
+      "detail": "the full framework carries effective size 412 in Table 2 and 911 in Table 6 while both rows print the same overlap coefficient 0.612, so the two entries cannot be the same quantity under one definition",
+      "anchor": "Table 2 panel A row 1 and Table 6 row 3"
+    }
+  ],
+  "interpretation": "A failure in the manuscript family is a disagreement inside the paper's own tables and is not a defect in this release; code_status is computed over every other family. A NOT_RUN entry means the check could not discriminate on the available evidence, and a BLOCKED entry means the evidence is absent by contract, as the private cohort is."
+}

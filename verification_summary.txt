@@ -1,0 +1,28 @@
+root               : wireope
+overall status     : PARTIALLY_VERIFIED
+code status        : PARTIALLY_VERIFIED
+gate status        : VERIFIED
+checks             : 66
+counts             : {'total': 66.0, 'passed': 62.0, 'failed': 0.0, 'not_run': 2.0, 'blocked': 2.0}
+claim map          : 100 claims, 16 passed, 83 not run, 1 blocked
+manuscript findings: 11
+not run            : ['data.public_corpus_rows_are_transcription_targets', 'data.dataset_links_reachable']
+blocked            : ['data.private_cohort_record_level_availability', 'container.docker_build']
+
+manuscript findings:
+  - manuscript.territory_partition_events: the two territory rows carry 549 events while the pooled row reports 564, a gap of 15 [Table 5 rows 5, 10, 11]
+  - manuscript.ablation_interaction_selection: the caption states the interaction ratio is computed on the violation rate and on selection accuracy; on selection accuracy the three pairs give [1.11, 1.31, 1.23] against the printed [1.2, 1.2, 1.22] [Table 2 panel A caption and column 4]
+  - manuscript.state_only_violation_row: Table 1 prints 2.04 for the state-only violation rate while the full framework plus the Table 2 removal delta gives 2.18 [Table 1 row 3 and Table 2 panel A row 2]
+  - manuscript.constraint_direction: Eq. (2) constrains a lower confidence limit of the risk estimator at or below a margin while Eq. (5) constrains an upper limit at or below a threshold on the same functional; the two printed forms disagree in direction [Eq. (2) and Eq. (5)]
+  - manuscript.utility_direction: Eq. (2) maximises decision-analytic net benefit while Eq. (3) defines the functional that Eq. (5) maximises as a graded excursion value whose sign runs the other way, so the two printed objectives cannot both be the utility [Eq. (2), Eq. (3) and Eq. (5)]
+  - manuscript.ladder_nesting_direction: Sec. 3.1 states the ladder implication as Y^(k) = 1 implying Y^(k+1) = 1, which makes the indicator non-decreasing in depth, while Sec. 3.4 nests the rungs as A_1 superset ... superset A_K with increasing thresholds, which makes it non-increasing [Sec. 3.1 formal statement and Sec. 3.4 opening]
+  - manuscript.abstention_coverage_complement: Table 1 reports 6.2% abstention while Table 5's coverage implies 5.3% on the held-out site and 5.3% pooled [Table 1 row 7, column 8 and Table 5 column 7]
+  - manuscript.unfilled_placeholder: the Introduction carries the unfilled placeholder '[insert number]%' in the first sentence of the background [Sec. 1 first paragraph]
+  - manuscript.prevalence_axis: the precision-recall axis is reported against a 3.8% prevalence while the cohort's own rate is 4.70% [Sec. 3.7 mid paragraph and Table 5 row 5]
+  - manuscript.table_numbering: Sec. 4.6 refers to the per-site table as 'Table 9.01' while the table carrying those numbers is Table 5 [Sec. 4.6 first sentence and Table 5]
+  - manuscript.full_cohort_effective_sample_size: the full framework carries effective size 412 in Table 2 and 911 in Table 6 while both rows print the same overlap coefficient 0.612, so the two entries cannot be the same quantity under one definition [Table 2 panel A row 1 and Table 6 row 3]
+
+operations whose estimator the manuscript does not state:
+  - data_arcade_lesion_labels: the canonical record describes x-ray angiography images rather than the CTA volumes the framework conditions on, so it enters no clinical claim
+
+interpretation     : A failure in the manuscript family is a disagreement inside the paper's own tables and is not a defect in this release; code_status is computed over every other family. A NOT_RUN entry means the check could not discriminate on the available evidence, and a BLOCKED entry means the evidence is absent by contract, as the private cohort is.

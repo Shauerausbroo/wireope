@@ -1,0 +1,9 @@
+# Table 4 panel B: the estimator machinery is probed outside the clinical cohort on
+# public logged corpora. Only the corpora named by the manuscript are listed; none is
+# downloaded by the release, so the rows are transcription targets.
+name: supplementary_public_corpora
+inherits: main
+corpora: [open_bandit, neorl2, cobs, deep_ope, d4rl]
+report:
+  target: table_4_panel_b
+  columns: [relative_error, effective_sample_size, overlap_coefficient, logging_regime]

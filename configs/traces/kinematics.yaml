@@ -1,0 +1,22 @@
+# Reconstruction of the delivered action from the intra-procedural device-advancement and
+# rotation event stream. The stream is not an action log: force, torque, progression and
+# rotation are not recorded by the robotic system, so the reconstructed discretised
+# kinematic action is an interpretation of the motion and not the motion itself.
+kinematics:
+  events: [advance, rotate_clockwise, rotate_counterclockwise, dwell, retract]
+  timestep_s: 0.25
+  advance_step_mm: 1.0
+  rotation_deg_per_event: 15.0
+  max_steps: 400
+  curvature_regularisation: 0.02
+  tip_tracking:
+    method: fluoroscopic_tip_regression
+    mean_absolute_error_mm: 4.44
+    reference: transverse-fluoroscopy tip tracker, reported mean absolute error
+  registration:
+    method: centreline_arc_length_align
+    transform: rigid_2d_plus_scale
+    iterations: 200
+    tolerance_mm: 0.05
+    frame: fluoroscopic
+    target: cta_envelope_centreline

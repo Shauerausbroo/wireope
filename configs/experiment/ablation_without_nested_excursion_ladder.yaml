@@ -1,0 +1,15 @@
+# Table 2 panel A row: the ladder is replaced by the binary endpoint comparator.
+name: ablation_without_nested_excursion_ladder
+inherits: main
+switches:
+  envelope_excursion_reconstruction: true
+  nested_excursion_ladder: false
+  support_constraint: true
+  action_channel: reconstructed
+  estimator: nested_dr
+report:
+  target: table_2_panel_a
+  variant: without_nested_excursion_ladder
+  expected_delta_selection_pp: -3.1
+  expected_delta_violation_pp: 1.02
+  expected_interaction_ratio: 1.00

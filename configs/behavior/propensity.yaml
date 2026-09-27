@@ -1,0 +1,24 @@
+# Behaviour-policy reconstruction. The behaviour policy is a two-part policy,
+# pi_b = ( pi_b(branch | s), pi_b(a | branch, s) ), estimated from the log rather than
+# observed, and reported with its fidelity per site and per operator stratum.
+propensity:
+  branch_model:
+    form: multinomial_logistic
+    features: [stage_onehot, calcification_grade, lesion_length_mm, territory_onehot, site_onehot]
+    l2: 1.0e-3
+    max_iter: 400
+  action_model:
+    form: conditional_multinomial_logistic
+    features: [branch_onehot, stage_onehot, device_class_onehot, attempt_index]
+    l2: 1.0e-3
+    max_iter: 400
+  clipping:
+    thresholds: [0.02, 0.10, 0.50]
+    labels: [least_aggressive, intermediate, most_aggressive]
+    default: 0.10
+  fidelity:
+    metrics: [log_loss, top1_agreement, expected_calibration_error]
+    report_axes: [site, operator_stratum]
+  discretisation_sweep:
+    granularities: [coarse, medium, fine]
+    note: residual of the reconstructed action against the true action, reported as interpretation

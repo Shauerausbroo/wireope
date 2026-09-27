@@ -1,0 +1,81 @@
+Third-party components referenced or used by this release
+=========================================================
+
+This file records the third-party datasets, models and software libraries that the
+release depends on or cites, with the licence each is distributed under and the
+canonical source. No third-party artefact is redistributed inside this repository:
+the private clinical cohort is held under site data-sharing agreements and is never
+bundled, and every public corpus is fetched from its own distribution point.
+
+Datasets and models
+-------------------
+CT-FM: a 3D image-based foundation model for computed tomography.
+  Licence   : MIT
+  Source    : https://github.com/project-lighter/CT-FM
+  Used as   : frozen volumetric encoder producing the lumen envelope and its
+              centreline; the encoder weights are downloaded by the operator, not
+              redistributed here.
+
+Medical Segmentation Decathlon, Task 09 (hepatic vasculature).
+  Licence   : Creative Commons Attribution-ShareAlike 4.0 International
+  Source    : https://registry.opendata.aws/msd/ (staged for MONAI at s3://msd-for-monai)
+  Used as   : open auxiliary corpus for pretraining and for external segmentation
+              comparison only; the modality is cardiac/abdominal and does not enter
+              any peripheral-limb claim.
+
+MedMNIST v2, 3D subset VesselMNIST3D.
+  Licence   : Creative Commons Attribution 4.0 International
+  Source    : https://medmnist.com/
+  Used as   : lightweight vessel-geometry probe on small volumes. The benchmark
+              states it is not intended for clinical use and its source modality is
+              magnetic resonance angiography.
+
+ARCADE (Automatic Region-based Coronary Artery Disease diagnostics).
+  Licence   : Creative Commons Zero v1.0 Universal
+  Source    : https://zenodo.org/records/10390295 (DOI 10.5281/zenodo.10390295)
+  Descriptor: Popov et al., Scientific Data 11, 20 (2024), DOI 10.1038/s41597-023-02871-z
+  Used as   : lesion-labelling auxiliary set.
+
+MONAI Model Zoo, Swin UNETR segmentation bundle.
+  Licence   : Apache License 2.0
+  Source    : https://github.com/Project-MONAI/model-zoo
+  Used as   : universal supervised segmentation comparison baseline.
+
+Open Bandit Dataset (ZOZO RESEARCH).
+  Licence   : Creative Commons Attribution 4.0 International, attribution to ZOZO RESEARCH
+  Source    : https://research.zozo.com/data.html
+  Used as   : public logged corpus with known propensities.
+
+NeoRL-2 benchmark.
+  Licence   : Apache License 2.0
+  Source    : https://github.com/polixir/NeoRL
+  Used as   : public logged corpus with conservative-logging tier.
+
+COBS confident off-policy selection release.
+  Licence   : Apache License 2.0
+  Source    : https://github.com/google-deepmind/offpolicy_selection_eslb
+  Used as   : auxiliary reference row of the public-corpus consistency table.
+
+Deep-OPE benchmark.
+  Licence   : Apache License 2.0
+  Source    : https://github.com/google-research/deep_ope
+  Used as   : auxiliary reference row of the public-corpus consistency table.
+
+D4RL reference environments.
+  Licence   : Apache License 2.0
+  Source    : https://github.com/Farama-Foundation/D4RL
+  Used as   : idealised tier of the public-corpus consistency table, explicitly not
+              a clinical corpus.
+
+Software
+--------
+numpy                 BSD 3-Clause            https://numpy.org
+scipy                 BSD 3-Clause            https://scipy.org
+scikit-learn          BSD 3-Clause            https://scikit-learn.org
+PyTorch               BSD 3-Clause            https://pytorch.org
+PyYAML                MIT                     https://pyyaml.org
+pytest                MIT                     https://pytest.org
+ruff                  MIT                     https://github.com/astral-sh/ruff
+black                 MIT                     https://github.com/psf/black
+isort                 MIT                     https://github.com/PyCQA/isort
+mypy                  MIT                     https://github.com/python/mypy

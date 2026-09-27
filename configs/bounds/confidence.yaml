@@ -1,0 +1,17 @@
+# Confidence bounds. Eq. (7) is the Hoeffding form; the empirical-Bernstein version in
+# Appendix A is the one used to report estimates, and its residual correction reduces to
+# Eq. (7) at the maximum-variance extreme sigma_k = B/2.
+confidence:
+  delta: 0.05
+  bounded_range_B: 1.0
+  bound_type: empirical_bernstein
+  fallback_bound_type: hoeffding
+  report_both: true
+  effective_sample_size:
+    definition: min_over_rungs
+    estimator: importance_weight_ess
+    overlap_coefficient: state_density
+    clip_denominator: 1.0e-8
+  union_bound:
+    per_rung: true
+    inflation: log_two_k_over_delta

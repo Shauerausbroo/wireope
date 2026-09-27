@@ -1,0 +1,13 @@
+# Table 6: one scaling axis is varied per row while the table annotates both the record
+# count and the rarest-rung positive-event count.
+name: supplementary_scaling
+inherits: main
+axes:
+  - {key: cohort_fraction, values: [0.25, 0.5, 1.0]}
+  - {key: site_count, values: [1, 2, 3]}
+  - {key: territory, values: [femoropopliteal, tibial]}
+  - {key: vendor_class, values: [single, multiple]}
+report:
+  target: table_6_scaling
+  columns: [records, rarest_rung_positive_events, relative_error, effective_sample_size,
+            overlap_coefficient]

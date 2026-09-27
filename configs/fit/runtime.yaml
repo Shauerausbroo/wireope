@@ -1,0 +1,25 @@
+# Runtime shape. The manuscript states that encoder training uses a single processor
+# graphics node, that every estimator and hazard head is fitted with hard-wired seeds,
+# and that no online inference or real-time latency requirement applies. The accelerator
+# model, its memory and the wall-clock are not reported.
+runtime:
+  world_size: 1
+  device: cpu
+  precision: fp32
+  amp: false
+  tf32: false
+  num_workers: 0
+  pin_memory: false
+  deterministic: true
+  checkpoint:
+    dir: artefacts/checkpoints
+    keep_last: 2
+    atomic: true
+  volume_shape: [32, 32, 32]
+  compute_target:
+    reported: single_processor_graphics_node
+    accelerator_model: COMPUTE_NOT_REPORTED
+    vram_gb: COMPUTE_NOT_REPORTED
+    wall_clock: COMPUTE_NOT_REPORTED
+    storage_gb: COMPUTE_NOT_REPORTED
+    source: Sec. 3.7, final paragraph

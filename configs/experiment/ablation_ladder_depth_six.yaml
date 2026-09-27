@@ -1,0 +1,19 @@
+# Table 2 panel A depth-sensitivity row: the deepest ladder the manuscript tests.
+name: ablation_ladder_depth_six
+inherits: main
+overrides:
+  ladder:
+    depth: 6
+switches:
+  envelope_excursion_reconstruction: true
+  nested_excursion_ladder: true
+  support_constraint: true
+  action_channel: reconstructed
+  estimator: nested_dr
+report:
+  target: table_2_panel_a
+  variant: depth_sensitivity_deepest_ladder_tested
+  ladder_depth: 6
+  expected_delta_selection_pp: -0.9
+  expected_delta_violation_pp: 0.21
+  expected_interaction_ratio: 1.00

@@ -1,0 +1,40 @@
+# Full framework. Primary reported comparison is Table 1 on the held-out external site.
+name: main
+components:
+  - cohort/clinical
+  - cohort/release
+  - cohort/partitions
+  - cohort/public_corpora
+  - geometry/envelope
+  - geometry/descriptors
+  - traces/kinematics
+  - traces/uncertainty
+  - laddering/severity
+  - laddering/weights
+  - behavior/propensity
+  - estimators/library
+  - estimators/hazard
+  - estimators/outcome
+  - bounds/confidence
+  - certification/support
+  - certification/sweep
+  - fit/optimizer
+  - fit/schedule
+  - fit/runtime
+switches:
+  envelope_excursion_reconstruction: true
+  nested_excursion_ladder: true
+  support_constraint: true
+  action_channel: reconstructed
+  estimator: nested_dr
+report:
+  target: table_1_main_comparison
+  held_out: external_site
+  compare_arms:
+    - clinician_behaviour_policy
+    - anatomical_supervised_risk_score
+    - state_only_estimate
+    - unconstrained_argmax
+    - best_aggregate_hybrid
+    - direct_or_kernel_family
+    - support_constrained_rule

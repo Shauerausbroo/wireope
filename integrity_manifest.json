@@ -1,0 +1,639 @@
+{
+  "root": "wireope",
+  "algorithm": "sha256",
+  "excluded": [
+    "integrity_manifest.json"
+  ],
+  "file_count": 157,
+  "manifest_digest": "8f4cb75acd67b94ea13b9fd3f0ab3ec204026ad06aecfd1f988be15b0f5a619a",
+  "files": [
+    {
+      "path": ".gitignore",
+      "sha256": "80256166f28a67fd81dea038fb5923fb4c26ff6d5c74cdec2970d34b979970c7"
+    },
+    {
+      "path": ".pre-commit-config.yaml",
+      "sha256": "8ca4df30ad77d80673dfc77db4afe47d451eb507cf1e34b0114674765f866f0e"
+    },
+    {
+      "path": "Dockerfile",
+      "sha256": "e9bab1460fcbb0fbc0b909b6aa662135b4d2af5d9e63c388bdd6acce8ca8d4f6"
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "a6c7a4837e32c93c6eeadff0fbf2df5ecb9c3ec49de38e4836c4d4ed78675c90"
+    },
+    {
+      "path": "README.md",
+      "sha256": "839deee3a88ef08cfe4173f8ed8ecfc0833a5b438af415bc6ad4c9c48446682c"
+    },
+    {
+      "path": "THIRD_PARTY_NOTICES.txt",
+      "sha256": "7eef566aefe8048c45d4860aafc67f2f5f42a0e3ff67254e88a926cd06e663e7"
+    },
+    {
+      "path": "claim_to_code.json",
+      "sha256": "444dce31f08559a7826235bf19fbe751101261906fd47d1408d4088d04697eb1"
+    },
+    {
+      "path": "configs/behavior/propensity.yaml",
+      "sha256": "6807dbd0d15234148c77f87b254f12dcf273be2d68e265db13f557f7cc4bc71e"
+    },
+    {
+      "path": "configs/bounds/confidence.yaml",
+      "sha256": "0d8ade5d11bb4b41a294bea31f0cb6a59e67758cc0301afba95dfd94908ce00a"
+    },
+    {
+      "path": "configs/certification/support.yaml",
+      "sha256": "37c35d7d65006def38216a71fd901478c851a69ad0ba3546927b0f0ced82a85e"
+    },
+    {
+      "path": "configs/certification/sweep.yaml",
+      "sha256": "6f99aa1179ffca9919c8164d11ce3dabae310bc326cd5fa7b4535b670326d89c"
+    },
+    {
+      "path": "configs/cohort/clinical.yaml",
+      "sha256": "daaf21590e92bdaae43a17628b2d6a50f59f00092810296ca0752867e0c46545"
+    },
+    {
+      "path": "configs/cohort/partitions.yaml",
+      "sha256": "35abdf16ef96fcb2540fb758f284c2817d6bbbfbd720342bf063f52128f33795"
+    },
+    {
+      "path": "configs/cohort/public_corpora.yaml",
+      "sha256": "c0c37368ebaeae63cd8bf7062b9abd5b25d272bdbed4ec484528beacb1e08faf"
+    },
+    {
+      "path": "configs/cohort/release.yaml",
+      "sha256": "606d76f5d36932f05e85fb4e6d16c40f389e752a354550e8761becdd757a6f89"
+    },
+    {
+      "path": "configs/estimators/hazard.yaml",
+      "sha256": "0dcc0e02cf49e6d5a304f2f5b5f27cb39702ea1b4bbb6633f11658e779986207"
+    },
+    {
+      "path": "configs/estimators/library.yaml",
+      "sha256": "1036d59a15268e6e621414c5a1f9cb1e556c292e3d2e26fbddd44e9666abc44a"
+    },
+    {
+      "path": "configs/estimators/outcome.yaml",
+      "sha256": "44631ed02d409246dba38d35fe003d500d1474d979e51ce652e5b47dd6bd377c"
+    },
+    {
+      "path": "configs/experiment/_smoke.yaml",
+      "sha256": "f4fefa1bd690d2abc08b43738509207978ef06608543cd3a2f9456b1af23c965"
+    },
+    {
+      "path": "configs/experiment/ablation_ladder_and_support_removed.yaml",
+      "sha256": "a4c76e158a1ecadf8426193befba37d694637e2fb69880f2b3c5e24d261f9845"
+    },
+    {
+      "path": "configs/experiment/ablation_ladder_depth_six.yaml",
+      "sha256": "76cdeda7d6e4795fa98f95785662968ed56a475deaf40ea39412e97d93a01f28"
+    },
+    {
+      "path": "configs/experiment/ablation_reconstruction_and_ladder_removed.yaml",
+      "sha256": "923d87dd834026f7567cc206ca55e7cca665a35287eaa51da854d16dc199cd26"
+    },
+    {
+      "path": "configs/experiment/ablation_reconstruction_and_support_removed.yaml",
+      "sha256": "604d98442be28c547ab3210601b3b5928bac6b61eff3e27fd6839261faee907d"
+    },
+    {
+      "path": "configs/experiment/ablation_without_envelope_excursion_reconstruction.yaml",
+      "sha256": "3d80845df3d99d9250dc7672cdeb12f0167a075719c432ae534838995ca45569"
+    },
+    {
+      "path": "configs/experiment/ablation_without_nested_excursion_ladder.yaml",
+      "sha256": "e7663e5629d3593be7b1b10b90c94a785cbaf0be89e67370824d744e12ff86fa"
+    },
+    {
+      "path": "configs/experiment/ablation_without_support_constraint.yaml",
+      "sha256": "be147144e16ba792837ef0a9e9d3ab0ebf39eabf83474467f50908b8883d7210"
+    },
+    {
+      "path": "configs/experiment/main.yaml",
+      "sha256": "5bf48928a1b4502e1d21b2e9c6e2164fd60911fc01324b54b66cce04b6fcf401"
+    },
+    {
+      "path": "configs/experiment/supplementary_clinician_arms.yaml",
+      "sha256": "30a65900b67554ddd59c38ef1670fbf61ab96f1296d04d315520c4ed386f1b5b"
+    },
+    {
+      "path": "configs/experiment/supplementary_event_budget.yaml",
+      "sha256": "5851a936d5ca91b2b084933cbece53305e45b9b83de00cdad4dfdcd19f58c684"
+    },
+    {
+      "path": "configs/experiment/supplementary_public_corpora.yaml",
+      "sha256": "122351fc68f6b9f48bb4b317f86b10e262db357725a8cbfa4334d7162e4c9e00"
+    },
+    {
+      "path": "configs/experiment/supplementary_scaling.yaml",
+      "sha256": "30dbaf04c2e539db2c41c27ccf59a7902364b1cbf39793cb7d99172650969d66"
+    },
+    {
+      "path": "configs/experiment/supplementary_sitewise.yaml",
+      "sha256": "87dcc7127fbc11855d9a272e84c575123cba4d5a045871dd1c030408b6287777"
+    },
+    {
+      "path": "configs/experiment/supplementary_weight_control_sweep.yaml",
+      "sha256": "eef130770a40bb12c1ca31dc3a268e59e160cccef26e8f797ef584eeb72b3bdf"
+    },
+    {
+      "path": "configs/fit/optimizer.yaml",
+      "sha256": "8717a2a7301d3cf5f4cd7ececf0a4efc1e8f862e8550bca7854b68324be6e72c"
+    },
+    {
+      "path": "configs/fit/runtime.yaml",
+      "sha256": "c7c8a098d2b07bf997763564064b12b5d8f5dce69926c2bfa44ce4c696f143cc"
+    },
+    {
+      "path": "configs/fit/schedule.yaml",
+      "sha256": "1aedf1f009d6f3f2172db1e2b1904c60b5b104698afef4c57b6c9d955c3722e0"
+    },
+    {
+      "path": "configs/geometry/descriptors.yaml",
+      "sha256": "0c3c25cce29c76f0102769b6001689abb02435e5054ea4dbce651c0d2e6d8e62"
+    },
+    {
+      "path": "configs/geometry/envelope.yaml",
+      "sha256": "fa07ec4f2f40bc9d8d6ee08b437ff2979aed5373c43cc2633abd46da436fe1cc"
+    },
+    {
+      "path": "configs/laddering/severity.yaml",
+      "sha256": "5e0025f2e406d78ed5726498f603fdfe7dd580e720bf62e04224547ff871c007"
+    },
+    {
+      "path": "configs/laddering/weights.yaml",
+      "sha256": "1822125de3fa6641c3e2d876e2dad3b20bab8bdc6c95522dee84b66a6096039e"
+    },
+    {
+      "path": "configs/traces/kinematics.yaml",
+      "sha256": "dd780d0bf7674cec9147375784644061ca384738768a19bbe42cbe2c183374b9"
+    },
+    {
+      "path": "configs/traces/uncertainty.yaml",
+      "sha256": "652287350ad7b5f32d438bfa921255d3fa28a96fc63fd7c1c6209d7d0b70d9d6"
+    },
+    {
+      "path": "dataset_urls.txt",
+      "sha256": "9ac3cf89670409acc33fed780b0e7310553a5d682c0df58721627b285826d54d"
+    },
+    {
+      "path": "environment.yml",
+      "sha256": "0b056fdd6cc3787b47c7c226b512381cf269d631f89f6683674a94608d236353"
+    },
+    {
+      "path": "pyproject.toml",
+      "sha256": "df6aec945c5634251fce059045903209e9a88601773cccfd8332f47868b6f330"
+    },
+    {
+      "path": "requirements-dev.txt",
+      "sha256": "836fe1d3ec34565447c6fdc334ee1683ecce8188526dc0e93d2b2694f2324a03"
+    },
+    {
+      "path": "requirements.txt",
+      "sha256": "cde4f0650e1711c7aac5ce0b2b3c0b5d3af46086eacd81a4d2793d8ed2dfc82f"
+    },
+    {
+      "path": "scripts/launch_certify.sh",
+      "sha256": "d08dcdfa3105b7dc252438c8aa63f910e446c10873a8c8041452968ed25da6e5"
+    },
+    {
+      "path": "scripts/launch_fit.sh",
+      "sha256": "8c03316f48018e0546e80611b75588beab0b9869fc0d7e356804ce45f5e13e25"
+    },
+    {
+      "path": "scripts/prepare_data.sh",
+      "sha256": "1fe08e6e3c910d17db76dc8089274a35eed6dd0ccbd342eba9f8d80856f7294c"
+    },
+    {
+      "path": "scripts/run_verification.sh",
+      "sha256": "7901cf8c6a7ff1f699d7cd07bb0d55a352961d49b2200aed731e7aaf86cf657c"
+    },
+    {
+      "path": "src/wireope/__init__.py",
+      "sha256": "6b4061549155ee9894c4371db5e2106fcb4470ce7cb19dc82e451a88496ef8e7"
+    },
+    {
+      "path": "src/wireope/behavior/__init__.py",
+      "sha256": "95ea5604504811c22a6f56514e15bf23cad4c23b4874b1f30c655fc8cfb88ec5"
+    },
+    {
+      "path": "src/wireope/behavior/action.py",
+      "sha256": "1a0b244e18a356eb7194542517c987074af7efcd544c3e665c021fd28aec3ed4"
+    },
+    {
+      "path": "src/wireope/behavior/branch.py",
+      "sha256": "5ae8dbd0790f83d90b4fcefea60f9d6621c160441fc681395f0d5f43b8daee70"
+    },
+    {
+      "path": "src/wireope/behavior/fidelity.py",
+      "sha256": "eee1266335bac52d9de21bbe896a04fd0b0f0081e05d63aff2af820d806e9f33"
+    },
+    {
+      "path": "src/wireope/bounds/__init__.py",
+      "sha256": "3a755b261aec65f72547bf9cdfb2273637013f849d8517217a37504e2e01a0a5"
+    },
+    {
+      "path": "src/wireope/bounds/effective_sample.py",
+      "sha256": "33bcb09026d74eda2b6a85780d938f2de07e21381586defdd61572a28f08c5fa"
+    },
+    {
+      "path": "src/wireope/bounds/empirical_bernstein.py",
+      "sha256": "cdb76903cdec961ecca5b2e88ca3d16c2decaac4fccfb5c87bcfd9929dce5fa7"
+    },
+    {
+      "path": "src/wireope/bounds/hoeffding.py",
+      "sha256": "84236f7708133b3229a4cec4cacb1785a279e9727a0912ce363099a22f73d2bd"
+    },
+    {
+      "path": "src/wireope/bounds/interval.py",
+      "sha256": "5b3ae005abfabaedb750879278d9ea46a691fc528559c820765c5f17b41d787e"
+    },
+    {
+      "path": "src/wireope/certification/__init__.py",
+      "sha256": "a40c70cf81c1113653632553c78a1fa5f8b88d3576ad9c50f90923d980cefe52"
+    },
+    {
+      "path": "src/wireope/certification/eligibility.py",
+      "sha256": "3c34b33aca0096461713ee08082b3ed2a1ee6d764f1361d7c42517678ca715f8"
+    },
+    {
+      "path": "src/wireope/certification/rule.py",
+      "sha256": "883a2facf8f38c2d264d58fbb2ace65a06a4b313a696c6fee70aae9e3016b62a"
+    },
+    {
+      "path": "src/wireope/certification/sweep.py",
+      "sha256": "fecb51e981f0e37316fb93439c559569067748f39da100cfd3fce45060569709"
+    },
+    {
+      "path": "src/wireope/cli/__init__.py",
+      "sha256": "6b3ca07563f59ac62e6b66bd29ae8d89472a3a3dbe5b1faa8dc88600d9c3cf66"
+    },
+    {
+      "path": "src/wireope/cli/_common.py",
+      "sha256": "f75af396039aab118eb5e14d0ef5a959585d86de63df8397b632595f8f0b4c02"
+    },
+    {
+      "path": "src/wireope/cli/certify.py",
+      "sha256": "518cad2ef5eeb30136460bf49fa169036fd71cb84ac39bfaa2ec8613de43b539"
+    },
+    {
+      "path": "src/wireope/cli/estimate.py",
+      "sha256": "7480844125e893d3932aa8134881c0b2d1411730956575b1e7202bf19d00c5ac"
+    },
+    {
+      "path": "src/wireope/cli/fit.py",
+      "sha256": "b74da5faa8d74ce4608edfbedbda627b344f096fd52f566d5b3a29d16ca5f6f7"
+    },
+    {
+      "path": "src/wireope/cli/reconstruct.py",
+      "sha256": "1b2130d792873e9d3b0691cbfb5fbd5c322605e445038d5a4c81be86335f4470"
+    },
+    {
+      "path": "src/wireope/cli/studies.py",
+      "sha256": "0d16403d4c3391946a0e5d62ffa33d6f65b57164f75f527b213d20685efa8693"
+    },
+    {
+      "path": "src/wireope/cli/verify.py",
+      "sha256": "90ee277947b6dd0cc8e724aa6206a74dfefd7f93151b0ca5570bd3f8e677a660"
+    },
+    {
+      "path": "src/wireope/cohort/__init__.py",
+      "sha256": "b47765c750e42aa7550be1f85873adb0d2d9ef338e500349c05360ccafff334c"
+    },
+    {
+      "path": "src/wireope/cohort/adjudication.py",
+      "sha256": "31e57366db7991da5851a606dec98434786b67e5b9a506801e2110de044318e9"
+    },
+    {
+      "path": "src/wireope/cohort/partitions.py",
+      "sha256": "134fcc34438cfe5bd6dac27bf8c716d68e82e491af661fdc5c9a9e83a3a52a0c"
+    },
+    {
+      "path": "src/wireope/cohort/release_cohort.py",
+      "sha256": "91a8d0998fbac387723ab151d01bea53bc4bb51bd607106acb66972306dd5132"
+    },
+    {
+      "path": "src/wireope/cohort/schema.py",
+      "sha256": "0cc4691eca9b65c0d01ed926e0c6cbab8b257e1bf339775e1e61c5b97d91244d"
+    },
+    {
+      "path": "src/wireope/config.py",
+      "sha256": "1845c0130f1b2b7d4d813b4e9387215e3e3a58743c84bd3e802be388e86d572e"
+    },
+    {
+      "path": "src/wireope/estimators/__init__.py",
+      "sha256": "2c2d525a54713e27133a966d51e5288abeb44c4fc13478cdac9850db919122fe"
+    },
+    {
+      "path": "src/wireope/estimators/base.py",
+      "sha256": "2723accf538808f393fde0cc9f2bb3ebdf318ac8bd868bba6967fb7dbd3f60d3"
+    },
+    {
+      "path": "src/wireope/estimators/direct.py",
+      "sha256": "be5c95db65768a4493e8e43d171555177c90c032dbc10c1ca6670c1133ff3d9a"
+    },
+    {
+      "path": "src/wireope/estimators/doubly_robust.py",
+      "sha256": "96d3ebeb096e59fcb9054990ed1680ced507d796d7c98885cf31ba103b183506"
+    },
+    {
+      "path": "src/wireope/estimators/high_confidence.py",
+      "sha256": "dafcb232e98613804e5b184db4efee216e5c8b03b5622b4674af3fe4d90fd239"
+    },
+    {
+      "path": "src/wireope/estimators/importance.py",
+      "sha256": "1aae398bcd90ebb4d705c8b6aa5932992255345b2e116d0b223e20687f917fe8"
+    },
+    {
+      "path": "src/wireope/estimators/kernel.py",
+      "sha256": "357dadb0d91d0ced02daae9cdf7e0a2782560a74b1a724fabe1ef029274b9cc2"
+    },
+    {
+      "path": "src/wireope/estimators/nested_dr.py",
+      "sha256": "adaa69380ec85a678cdf9a695ee93d6c16249be74a9d364cc22cc9323406f2a8"
+    },
+    {
+      "path": "src/wireope/estimators/registry.py",
+      "sha256": "9c1ad51eab5bc84965f8b3e0d97c2a3ce22e29a7ec727edcb250a4ec50df6777"
+    },
+    {
+      "path": "src/wireope/fit/__init__.py",
+      "sha256": "3ae395c7386b8608c0a6462fe84b74f75e29a52d85dfe991fdc5fff1db3107de"
+    },
+    {
+      "path": "src/wireope/fit/checkpoint.py",
+      "sha256": "1ffcc8c416e9f0eddf331140400971ed5d514e61a62be919593921fd50c77cf3"
+    },
+    {
+      "path": "src/wireope/fit/dataset.py",
+      "sha256": "0ba89ee784a4ee63a62dd139f146057c0783b5a03a188be0683f621106b9a558"
+    },
+    {
+      "path": "src/wireope/fit/distributed.py",
+      "sha256": "dd3844b4da8d92ff2a9760c40ba08c2d48846ed10cbc574751edbae50955c46b"
+    },
+    {
+      "path": "src/wireope/fit/ema.py",
+      "sha256": "3822bfaa3b589ab7d053b7d7b1dc99d8c7504f031c655e19190c3bf5efd41cd2"
+    },
+    {
+      "path": "src/wireope/fit/hazard.py",
+      "sha256": "26532682ac10621c19cca300668c4e330b71ed0e9284d64618509fcea0a51c4f"
+    },
+    {
+      "path": "src/wireope/fit/loop.py",
+      "sha256": "b0e8e26dfcf58bfa4c3247e9c25a97b40974e8849fd96663a8d60e209233c260"
+    },
+    {
+      "path": "src/wireope/fit/optim.py",
+      "sha256": "b3d5403879f9879a0be6325ef34049b25ebf3a302086e0c6484af6f45e7f3fda"
+    },
+    {
+      "path": "src/wireope/fit/outcome.py",
+      "sha256": "8be1e379d5044b84db9e8c94f5a0b0260d077a94708dbff90ffccd62ee88233a"
+    },
+    {
+      "path": "src/wireope/fit/schedule.py",
+      "sha256": "2c8c44f50622dc932de02d256fe453067d18b328895cfc4e4b3f4beac59c4d98"
+    },
+    {
+      "path": "src/wireope/geometry/__init__.py",
+      "sha256": "f8b29deada5af04f9e9cab75c3127dbf6783f87c0c90c94b45338d4128846b80"
+    },
+    {
+      "path": "src/wireope/geometry/descriptors.py",
+      "sha256": "c9515399c6421abf92d7d57326a79de538d9a187c3a0e7afbbe0b2bfa3224bdc"
+    },
+    {
+      "path": "src/wireope/geometry/encoder.py",
+      "sha256": "c5428ede0eed5eb946022d03681a6eac5e45efc68eeecc45acb4545557566d7c"
+    },
+    {
+      "path": "src/wireope/geometry/envelope.py",
+      "sha256": "209ffd86bad3083dd720d5b977e58c573f01f6862c1e56e41bcc5594d355a2f3"
+    },
+    {
+      "path": "src/wireope/geometry/vessel.py",
+      "sha256": "607b75bee34c8a11bf762c4070bf64556eb786374918f4fafda8257cb2177216"
+    },
+    {
+      "path": "src/wireope/laddering/__init__.py",
+      "sha256": "32511ced4973060ec83b94559cfc81be3ba68dd132dd516a3ff126165f3b5cc0"
+    },
+    {
+      "path": "src/wireope/laddering/resolution.py",
+      "sha256": "d1edf4afc2d872a9b56e8a9056111b9379392d07e0fae8f40fc62b4c25e998d9"
+    },
+    {
+      "path": "src/wireope/laddering/severity.py",
+      "sha256": "877aae41c9853ca490d1f94a9ef8a01063627ab4eda5aed0cf632e116c5f1995"
+    },
+    {
+      "path": "src/wireope/laddering/weights.py",
+      "sha256": "23cc3959ed8c31a62565b361099c50e021ec1e5144389b963eb93f5de990bcd6"
+    },
+    {
+      "path": "src/wireope/metrics/__init__.py",
+      "sha256": "d7b48e1abf221df6ab42a21ff53a6893834f8c093fc1077bb00097953371a729"
+    },
+    {
+      "path": "src/wireope/metrics/bootstrap.py",
+      "sha256": "b49d963d1270a5c8ad5b590629e4552aec4ef6558dc3f353cc7568a6bf7dbcce"
+    },
+    {
+      "path": "src/wireope/metrics/calibration.py",
+      "sha256": "7793a8007ef4820b39dca3c454789003bec43c3d2a193f87ec5800c6a961c008"
+    },
+    {
+      "path": "src/wireope/metrics/decision.py",
+      "sha256": "50e41d14426e699ddcbe4b2875946b560a11bad5c87f9befa177569e2b37f54b"
+    },
+    {
+      "path": "src/wireope/metrics/discrimination.py",
+      "sha256": "95492164357d8f665fbaf2aba81363da2791ee09244093d0ec0696fd336d7edc"
+    },
+    {
+      "path": "src/wireope/metrics/safety.py",
+      "sha256": "562d7caf55fa382557e31232205c8eaa12c48a9f93c552ab78b3744700625ac2"
+    },
+    {
+      "path": "src/wireope/report/__init__.py",
+      "sha256": "1262d9d866eb8b39cbdd4ef6b465b09e9669b3eeeebff519a11167e9e72b8f06"
+    },
+    {
+      "path": "src/wireope/report/render.py",
+      "sha256": "0d1f61144a625dc890eb3b7ce6d76ac1eef4d7acbec38e4312f72d328cebc9cd"
+    },
+    {
+      "path": "src/wireope/report/transcribe.py",
+      "sha256": "eb446e1d8b0ba3c2363c078fb6e2c2c3530970e15e92e1c7175b6a204c6948e0"
+    },
+    {
+      "path": "src/wireope/schema.py",
+      "sha256": "760f655a9d85aadc59b8e23f24a3030ef873459232a6d685ea54f7d732c1ed5e"
+    },
+    {
+      "path": "src/wireope/studies/__init__.py",
+      "sha256": "766a482012b6255f88e5cfb255bba4979f8ab1f1e2fe5972cad5471339f79f1c"
+    },
+    {
+      "path": "src/wireope/studies/ablation.py",
+      "sha256": "a19a68dc54ac926799b294186843ba1ba30bb46990af550609d0540b64256af4"
+    },
+    {
+      "path": "src/wireope/studies/arms.py",
+      "sha256": "a7b96ed198f35eaed9815c1ab27dc036d61f9dcdcc66792a861867db72faa936"
+    },
+    {
+      "path": "src/wireope/studies/bakeoff.py",
+      "sha256": "6a9464497504450f07d679ead32309212e07f22d0acf8b5269a7bcfa5f07d1a8"
+    },
+    {
+      "path": "src/wireope/studies/certify.py",
+      "sha256": "19473969ee232122d63b100ca88edf379f8de301eb72c50db416930d7b7799b1"
+    },
+    {
+      "path": "src/wireope/studies/pipeline.py",
+      "sha256": "4f49f04f9db715c4091c05186c50dcd8b7f0fee0237a2988b701b6a853e8356b"
+    },
+    {
+      "path": "src/wireope/studies/tables.py",
+      "sha256": "b86742818e6ce0dfb8753e259738100d1c1e2e7b165c81be9bbb5d48af0b38af"
+    },
+    {
+      "path": "src/wireope/traces/__init__.py",
+      "sha256": "48b3d12e26cd5d4e4701ff2bbdc6ac781cc5186af2fe0b2386dececc1bcbc7a8"
+    },
+    {
+      "path": "src/wireope/traces/events.py",
+      "sha256": "3c10870e08546f6ce2136fa900176e59741a133d5921080bca777cbfb8997b95"
+    },
+    {
+      "path": "src/wireope/traces/excursion.py",
+      "sha256": "903b18d2842ee5ae50090751a19fb4c8b95c478a3aa47a5a7ffa84af5b4267fd"
+    },
+    {
+      "path": "src/wireope/traces/registration.py",
+      "sha256": "9254f82cc42b2ca540b8f919427ca79df5092c3262bc0d72f86843a63fb88a76"
+    },
+    {
+      "path": "src/wireope/utils/__init__.py",
+      "sha256": "b07a9be434e7471162a11d633f013e0107c4e0d15ab9968e97ddf59494e0e57b"
+    },
+    {
+      "path": "src/wireope/utils/atomic.py",
+      "sha256": "14d1102496699ba1034a0fcd5f318a13ae69370e12910fcb8caf25de1a3c2add"
+    },
+    {
+      "path": "src/wireope/utils/linalg.py",
+      "sha256": "726db9003b88b3218fa2e6b33ce48ebad9caeb5a3652b97463e499169c0b7ea7"
+    },
+    {
+      "path": "src/wireope/utils/logging_setup.py",
+      "sha256": "2d7d5729bf42f73ddac9a7c7206a3ad52e337df5d751d7ac002e303194c8be27"
+    },
+    {
+      "path": "src/wireope/utils/manifest.py",
+      "sha256": "78a6d25a243514c4e825c929bf0a4a4a56ba8b4feb483c926b7a25a586345d23"
+    },
+    {
+      "path": "src/wireope/utils/seed.py",
+      "sha256": "0c3c8d9340d07648d019f985c83fee1a066886d08bb000eba567db40ab726fe9"
+    },
+    {
+      "path": "src/wireope/verification/__init__.py",
+      "sha256": "781aab5dcffcd295742682ef385e1b968083b36325d823dabf113db188116ff8"
+    },
+    {
+      "path": "src/wireope/verification/claims.py",
+      "sha256": "942d604d0bd8564d064e6a2b119635c5ceb4fcee7101c97b1030ad02555733fa"
+    },
+    {
+      "path": "src/wireope/verification/deviations.py",
+      "sha256": "ee7a668fe33b8c1bcc7a3a28fceab4d4b9e2cbcc69f08d9bec72cee70c6fc799"
+    },
+    {
+      "path": "src/wireope/verification/driver.py",
+      "sha256": "bd55d7254e88ce01ee9d11be06279418d721cc6af058be1c391149a80c7f245b"
+    },
+    {
+      "path": "src/wireope/verification/execution.py",
+      "sha256": "c4c589e06f0233a4af50f48cb842667302c4f91070b6b4794416dcf740e61b93"
+    },
+    {
+      "path": "src/wireope/verification/manuscript.py",
+      "sha256": "6f0a5d906087dc52da686bb5f2ecb0e713bec63af119c665672bfab2bd7ef900"
+    },
+    {
+      "path": "src/wireope/verification/report.py",
+      "sha256": "90e24f4628171117633759960a6f70d38f5e12035496fe73b539787b6066926f"
+    },
+    {
+      "path": "src/wireope/version.py",
+      "sha256": "264cdc9829a441e56a889d01049ddfb84645fb632c94c890296d3538fad08d59"
+    },
+    {
+      "path": "tests/conftest.py",
+      "sha256": "6eae23766d5dbe4a5ecd4eaf352ea6fed2603a22fc581265a427fe5417f1f576"
+    },
+    {
+      "path": "tests/test_behavior_and_cohort.py",
+      "sha256": "a182dbb7242a6acccd6b5e199cbf51ca937533031403b934ed5a659b6301b287"
+    },
+    {
+      "path": "tests/test_bounds_and_certification.py",
+      "sha256": "8778a488915265d4cddd028ef2ad4155879fe830279e5badcfaf9caf2993d20d"
+    },
+    {
+      "path": "tests/test_config_and_schema.py",
+      "sha256": "d087bd71840bc28e7f7c8f207cde290694f1dd7f9ba391a92c0e16f02e557e7a"
+    },
+    {
+      "path": "tests/test_estimators.py",
+      "sha256": "3e6ebad886d01cb7a0d6518728b66a7fc51cccc3f46123a73a843e3cb25c6f19"
+    },
+    {
+      "path": "tests/test_fit_pipeline.py",
+      "sha256": "ad9af73f56a1c0e77097462422eeb0e1adc288e2526ae1885b0b1d38510357d8"
+    },
+    {
+      "path": "tests/test_geometry.py",
+      "sha256": "404d3166766e1487b180d86bd107c8724a41b2f280eb404944de6a0197d458b1"
+    },
+    {
+      "path": "tests/test_ladder.py",
+      "sha256": "f3e2e53ab232895fc05b9a1c847138c0c3f567fa58709ed00c26a900dc498ceb"
+    },
+    {
+      "path": "tests/test_metrics.py",
+      "sha256": "e04d201eb6f96aa69e27605bb01669c831d2d2705c91d2337369b6c5bf729a2e"
+    },
+    {
+      "path": "tests/test_studies_and_report.py",
+      "sha256": "df5180df920853c3dbaae1d18225ec777cc221e9a0ae857233b5c8d7429eefd7"
+    },
+    {
+      "path": "tests/test_traces.py",
+      "sha256": "4b1ef77609b7a8baff7f80c5a68fc5c3f73df578211b86abb89d84a3d3c59759"
+    },
+    {
+      "path": "tests/test_training_smoke.py",
+      "sha256": "324ea18fb10255b5116ce5e4baefcc55ba96b40ff5b05ae98ff00b68930b8d5a"
+    },
+    {
+      "path": "tests/test_verification.py",
+      "sha256": "f0bf26e85192d2a80d66c102d954b92e07b9ab19c6b1b9d5422bb79577c35c21"
+    },
+    {
+      "path": "verification_report.json",
+      "sha256": "e1ed3c6019f4dea2bbc76941515ec63e01690d524f39d5cfecb36a388c4e93e7"
+    },
+    {
+      "path": "verification_summary.txt",
+      "sha256": "154b24a5899faa200f18cd686b79018561297bc2d2d56473d0e074ecb4b33abd"
+    }
+  ]
+}

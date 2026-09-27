@@ -1,0 +1,15 @@
+# Table 2 panel A pair row: reconstruction and support constraint both removed.
+name: ablation_reconstruction_and_support_removed
+inherits: main
+switches:
+  envelope_excursion_reconstruction: false
+  nested_excursion_ladder: true
+  support_constraint: false
+  action_channel: removed
+  estimator: unconstrained_argmax
+report:
+  target: table_2_panel_a
+  variant: without_reconstruction_and_without_support
+  expected_delta_selection_pp: -5.4
+  expected_delta_violation_pp: 3.42
+  expected_interaction_ratio: 1.22
