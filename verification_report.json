@@ -620,7 +620,7 @@
       {
         "name": "gate.pytest",
         "status": "PASS",
-        "detail": "exit code 0 from /opt/homebrew/opt/python@3.14/bin/python3.14 -m pytest -q",
+        "detail": "exit code 0 from pytest -q",
         "evidence": {
           "exit_code": 0
         }

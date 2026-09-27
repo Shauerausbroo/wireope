@@ -5,7 +5,7 @@
     "integrity_manifest.json"
   ],
   "file_count": 157,
-  "manifest_digest": "8f4cb75acd67b94ea13b9fd3f0ab3ec204026ad06aecfd1f988be15b0f5a619a",
+  "manifest_digest": "27c5a5724261f4b5bf239b4f13a91a6c5de29ec9421831dfab77baf19d2dbc2a",
   "files": [
     {
       "path": ".gitignore",
@@ -197,19 +197,19 @@
     },
     {
       "path": "scripts/launch_certify.sh",
-      "sha256": "d08dcdfa3105b7dc252438c8aa63f910e446c10873a8c8041452968ed25da6e5"
+      "sha256": "240535d477ffeed0a27a9a1dfcb04c7e39645a1d00b94f50837cb999294d7b3b"
     },
     {
       "path": "scripts/launch_fit.sh",
-      "sha256": "8c03316f48018e0546e80611b75588beab0b9869fc0d7e356804ce45f5e13e25"
+      "sha256": "442d158af08836c306bd8bd94fa0d438a3ba7dd8435f8a5c7a56500e533e6aa6"
     },
     {
       "path": "scripts/prepare_data.sh",
-      "sha256": "1fe08e6e3c910d17db76dc8089274a35eed6dd0ccbd342eba9f8d80856f7294c"
+      "sha256": "048dcac553c72325f3d114adbb3290267af33e48366ee0164bce1fc8ada9aea9"
     },
     {
       "path": "scripts/run_verification.sh",
-      "sha256": "7901cf8c6a7ff1f699d7cd07bb0d55a352961d49b2200aed731e7aaf86cf657c"
+      "sha256": "dd28624b65721ba36f80209559a6ad0dd38b02185466302a53bac444ac089b54"
     },
     {
       "path": "src/wireope/__init__.py",
@@ -561,7 +561,7 @@
     },
     {
       "path": "src/wireope/verification/execution.py",
-      "sha256": "c4c589e06f0233a4af50f48cb842667302c4f91070b6b4794416dcf740e61b93"
+      "sha256": "bde927d3f7135c2e2cd291bdc7c95ed06c0711d7fd0585d28b19ec6fa436db4c"
     },
     {
       "path": "src/wireope/verification/manuscript.py",
@@ -629,7 +629,7 @@
     },
     {
       "path": "verification_report.json",
-      "sha256": "e1ed3c6019f4dea2bbc76941515ec63e01690d524f39d5cfecb36a388c4e93e7"
+      "sha256": "06aae2d090cd4cba8ea7851d6bc0fcfe867e9cecdb2136ecac57e20624c6aa0e"
     },
     {
       "path": "verification_summary.txt",

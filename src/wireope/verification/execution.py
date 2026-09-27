@@ -1471,8 +1471,13 @@ def run_execution_checks(fixture: Fixture) -> tuple[ExecutionCheck, ...]:
     return tuple(results)
 
 
-def gate_command(name: str, command: list[str], cwd: Path) -> ExecutionCheck:
-    """Run a tooling gate and decide on its exit code rather than on its output text."""
+def gate_command(name: str, label: str, command: list[str], cwd: Path) -> ExecutionCheck:
+    """Run a tooling gate and decide on its exit code rather than on its output text.
+
+    The evidence names the gate by its label: `command[0]` would print the interpreter's
+    absolute path, which is both a host fingerprint and a machine-dependent string in a file
+    the integrity manifest digests.
+    """
     environment = {
         "COLUMNS": "120",
         "LINES": "40",
@@ -1489,7 +1494,7 @@ def gate_command(name: str, command: list[str], cwd: Path) -> ExecutionCheck:
     return _check(
         name,
         CheckStatus.PASS if completed.returncode == 0 else CheckStatus.FAIL,
-        f"exit code {completed.returncode} from {' '.join(command)}",
+        f"exit code {completed.returncode} from {label}",
         exit_code=completed.returncode,
     )
 
@@ -1498,11 +1503,16 @@ def run_gates(repo_root: Path) -> tuple[ExecutionCheck, ...]:
     """Run the four tooling gates plus the suite, each decided on its exit code."""
     interpreter = sys.executable or "python3"
     return (
-        gate_command("gate.ruff", ["ruff", "check", "."], repo_root),
-        gate_command("gate.black", ["black", "--check", "."], repo_root),
-        gate_command("gate.isort", ["isort", "--check-only", "."], repo_root),
-        gate_command("gate.mypy", ["mypy", "--config-file", "pyproject.toml"], repo_root),
-        gate_command("gate.pytest", [interpreter, "-m", "pytest", "-q"], repo_root),
+        gate_command("gate.ruff", "ruff check .", ["ruff", "check", "."], repo_root),
+        gate_command("gate.black", "black --check .", ["black", "--check", "."], repo_root),
+        gate_command("gate.isort", "isort --check-only .", ["isort", "--check-only", "."], repo_root),
+        gate_command(
+            "gate.mypy",
+            "mypy --config-file pyproject.toml",
+            ["mypy", "--config-file", "pyproject.toml"],
+            repo_root,
+        ),
+        gate_command("gate.pytest", "pytest -q", [interpreter, "-m", "pytest", "-q"], repo_root),
     )
 
 
